@@ -1,0 +1,137 @@
+openapi: 3.2.0
+info:
+  title: Tradera Categories API
+  description: REST/JSON version of the Tradera API.
+  version: v4-beta
+security:
+- AppAuth: []
+  AppKeyAuth: []
+  UserAuth: []
+  UserTokenAuth: []
+tags:
+- name: Categories
+paths:
+  /v4/categories:
+    get:
+      tags:
+      - Categories
+      summary: Gets the category tree
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+      operationId: getV4Categories
+      x-operation-id-source: derived
+  /v4/categories/{categoryId}/attribute-definitions:
+    get:
+      tags:
+      - Categories
+      summary: Gets attribute definitions for a specific category, including category-specific…
+      parameters:
+      - name: categoryId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttributeDefinition'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttributeDefinition'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttributeDefinition'
+      operationId: getV4CategoriesByCategoryIdAttributeDefinitions
+      x-operation-id-source: derived
+components:
+  schemas:
+    Category:
+      type: object
+      additionalProperties: false
+    AttributeDefinition:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        maxNumberOfValues:
+          type: integer
+          format: int32
+        minNumberOfValues:
+          type: integer
+          format: int32
+        possibleTermValues:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        key:
+          type:
+          - string
+          - 'null'
+        attributeType:
+          type:
+          - string
+          - 'null'
+        valueFormatting:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    AppAuth:
+      type: apiKey
+      description: Application ID
+      name: X-App-Id
+      in: header
+    AppKeyAuth:
+      type: apiKey
+      description: Application Key
+      name: X-App-Key
+      in: header
+    UserAuth:
+      type: apiKey
+      description: User ID
+      name: X-User-Id
+      in: header
+    UserTokenAuth:
+      type: apiKey
+      description: User Token
+      name: X-User-Token
+      in: header

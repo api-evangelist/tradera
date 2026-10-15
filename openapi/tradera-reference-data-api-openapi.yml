@@ -1,0 +1,464 @@
+openapi: 3.2.0
+info:
+  title: Tradera Reference Data API
+  description: REST/JSON version of the Tradera API.
+  version: v4-beta
+security:
+- AppAuth: []
+  AppKeyAuth: []
+  UserAuth: []
+  UserTokenAuth: []
+tags:
+- name: Reference Data
+paths:
+  /v4/reference-data/time:
+    get:
+      tags:
+      - Reference Data
+      summary: Gets the current server time
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                format: date-time
+            application/json:
+              schema:
+                type: string
+                format: date-time
+            text/json:
+              schema:
+                type: string
+                format: date-time
+      operationId: getV4ReferenceDataTime
+      x-operation-id-source: derived
+  /v4/reference-data/accepted-bidder-types:
+    get:
+      tags:
+      - Reference Data
+      summary: Gets the list of accepted bidder types (the buyer regions allowed to bid on or…
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+      operationId: getV4ReferenceDataAcceptedBidderTypes
+      x-operation-id-source: derived
+  /v4/reference-data/expo-item-types:
+    get:
+      tags:
+      - Reference Data
+      summary: Gets the list of expo item types with current fees
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+      operationId: getV4ReferenceDataExpoItemTypes
+      x-operation-id-source: derived
+  /v4/reference-data/item-types:
+    get:
+      tags:
+      - Reference Data
+      summary: Gets the list of available item types
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+      operationId: getV4ReferenceDataItemTypes
+      x-operation-id-source: derived
+  /v4/reference-data/counties:
+    get:
+      tags:
+      - Reference Data
+      summary: Gets the list of Swedish counties
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/IdDescriptionPair'
+      operationId: getV4ReferenceDataCounties
+      x-operation-id-source: derived
+  /v4/reference-data/item-field-values:
+    get:
+      tags:
+      - Reference Data
+      summary: Gets the available item field values (VAT rates, item attributes, payment…
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ItemFieldsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ItemFieldsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ItemFieldsResponse'
+      operationId: getV4ReferenceDataItemFieldValues
+      x-operation-id-source: derived
+  /v4/reference-data/shipping-options:
+    get:
+      tags:
+      - Reference Data
+      summary: Gets shipping options for the specified country codes
+      parameters:
+      - name: fromCountryCodes
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: categoryIds
+        in: query
+        schema:
+          type: array
+          items:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetShippingOptionsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetShippingOptionsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetShippingOptionsResponse'
+      operationId: getV4ReferenceDataShippingOptions
+      x-operation-id-source: derived
+components:
+  schemas:
+    IdDescriptionPair:
+      type: object
+      additionalProperties: false
+    ShippingProduct:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        shippingProvider:
+          type:
+          - string
+          - 'null'
+        shippingProviderId:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+        weight:
+          type: number
+          format: double
+        price:
+          type: integer
+          format: int32
+        vatPercent:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        toCountry:
+          type:
+          - string
+          - 'null'
+        fromCountry:
+          type:
+          - string
+          - 'null'
+        packageRequirements:
+          $ref: '#/components/schemas/ShippingPackageRequirements'
+        dimensionsExceededPenalty:
+          type: integer
+          format: int32
+        weightExceededPenalty:
+          type: integer
+          format: int32
+        displayPenaltyWarning:
+          type: boolean
+        deliveryInformation:
+          $ref: '#/components/schemas/ShippingDeliveryInformation'
+        termsAndConditions:
+          $ref: '#/components/schemas/ShippingTermsAndConditions'
+      additionalProperties: false
+    ProductsPerWeightSpan:
+      type: object
+      properties:
+        weight:
+          type: number
+          format: double
+        products:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ShippingProduct'
+      additionalProperties: false
+    ShippingPackageRequirements:
+      type: object
+      properties:
+        maxWeight:
+          type:
+          - number
+          - 'null'
+          format: double
+        minWeight:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxSumOfAllSides:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxSumOfLengthAndHeight:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxLengthPlusCircumference:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxLength:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxWidth:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxHeight:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxVolume:
+          type:
+          - number
+          - 'null'
+          format: double
+        minLength:
+          type:
+          - number
+          - 'null'
+          format: double
+        minWidth:
+          type:
+          - number
+          - 'null'
+          format: double
+        minHeight:
+          type:
+          - number
+          - 'null'
+          format: double
+        restrictions:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    ShippingEstimatedDeliveryTime:
+      type: object
+      properties:
+        minWeekdays:
+          type: integer
+          format: int32
+        maxWeekdays:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    ShippingInsurance:
+      type: object
+      properties:
+        totalAmount:
+          type:
+          - number
+          - 'null'
+          format: double
+        totalAmountUpToItemValue:
+          type:
+          - number
+          - 'null'
+          format: double
+        amountPerKilogram:
+          type:
+          - number
+          - 'null'
+          format: double
+        hasReimbursementUpToPackageCost:
+          type: boolean
+      additionalProperties: false
+    ItemFieldsResponse:
+      type: object
+      properties:
+        vat:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        itemAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IdDescriptionPair'
+        paymentTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IdDescriptionPair'
+        shippingTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IdDescriptionPair'
+      additionalProperties: false
+    ShippingDeliveryInformation:
+      type: object
+      properties:
+        mailBoxWithServicePointBackup:
+          type: boolean
+        servicePoint:
+          type: boolean
+        canChangeServicePoint:
+          type: boolean
+        isTraceable:
+          type: boolean
+        isParcelBoxDeliveryPossible:
+          type: boolean
+        estimatedDeliveryTime:
+          $ref: '#/components/schemas/ShippingEstimatedDeliveryTime'
+        insurance:
+          $ref: '#/components/schemas/ShippingInsurance'
+      additionalProperties: false
+    ShippingTermsAndConditions:
+      type: object
+      properties:
+        termsAndConditionUrl:
+          type:
+          - string
+          - 'null'
+        general:
+          type:
+          - string
+          - 'null'
+        termsOfService:
+          type:
+          - string
+          - 'null'
+        termsOfPurchase:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GetShippingOptionsResponse:
+      type: object
+      properties:
+        productsPerWeightSpan:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ProductsPerWeightSpan'
+      additionalProperties: false
+  securitySchemes:
+    AppAuth:
+      type: apiKey
+      description: Application ID
+      name: X-App-Id
+      in: header
+    AppKeyAuth:
+      type: apiKey
+      description: Application Key
+      name: X-App-Key
+      in: header
+    UserAuth:
+      type: apiKey
+      description: User ID
+      name: X-User-Id
+      in: header
+    UserTokenAuth:
+      type: apiKey
+      description: User Token
+      name: X-User-Token
+      in: header

@@ -1,0 +1,242 @@
+openapi: 3.2.0
+info:
+  title: Tradera Auth API
+  description: REST/JSON version of the Tradera API.
+  version: v4-beta
+security:
+- AppAuth: []
+  AppKeyAuth: []
+  UserAuth: []
+  UserTokenAuth: []
+tags:
+- name: Auth
+paths:
+  /v4/auth/token:
+    post:
+      tags:
+      - Auth
+      summary: Fetches an authentication token for a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchTokenRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FetchTokenRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FetchTokenRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Token'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+      operationId: postV4AuthToken
+      x-operation-id-source: derived
+  /v4/auth/bankid/begin:
+    post:
+      tags:
+      - Auth
+      summary: Begins a BankID verification process
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BeginBankIdVerificationResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeginBankIdVerificationResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BeginBankIdVerificationResult'
+      operationId: postV4AuthBankidBegin
+      x-operation-id-source: derived
+  /v4/auth/bankid/begin-on-file:
+    post:
+      tags:
+      - Auth
+      summary: Begins a BankID-on-file verification process
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BeginBankIdOnFileVerificationResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeginBankIdOnFileVerificationResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BeginBankIdOnFileVerificationResult'
+      operationId: postV4AuthBankidBeginOnFile
+      x-operation-id-source: derived
+  /v4/auth/bankid/progress:
+    get:
+      tags:
+      - Auth
+      summary: Gets the progress of a BankID verification
+      parameters:
+      - name: bankIdOrderRef
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetBankIdVerificationProgressResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetBankIdVerificationProgressResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetBankIdVerificationProgressResult'
+      operationId: getV4AuthBankidProgress
+      x-operation-id-source: derived
+  /v4/auth/bankid/cancel:
+    post:
+      tags:
+      - Auth
+      summary: Cancels an ongoing BankID verification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelBankIdVerificationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CancelBankIdVerificationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CancelBankIdVerificationRequest'
+      responses:
+        '200':
+          description: OK
+      operationId: postV4AuthBankidCancel
+      x-operation-id-source: derived
+components:
+  schemas:
+    BeginBankIdOnFileVerificationResult:
+      type: object
+      properties:
+        bankIdOrderRef:
+          type:
+          - string
+          - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        autoStartToken:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BeginBankIdVerificationResult:
+      type: object
+      properties:
+        bankIdOrderRef:
+          type:
+          - string
+          - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        qrData:
+          type:
+          - string
+          - 'null'
+        autoStartToken:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CancelBankIdVerificationRequest:
+      type: object
+      properties:
+        bankIdOrderRef:
+          type:
+          - string
+          - 'null'
+          description: The BankID order reference to cancel.
+      additionalProperties: false
+      description: Request body for the CancelBankIdVerification endpoint.
+    Token:
+      type: object
+      properties:
+        authToken:
+          type:
+          - string
+          - 'null'
+        hardExpirationTime:
+          type: string
+          format: date-time
+      additionalProperties: false
+    FetchTokenRequest:
+      type: object
+      properties:
+        userId:
+          type: integer
+          description: The user ID to fetch a token for.
+          format: int32
+        secretKey:
+          type:
+          - string
+          - 'null'
+          description: The secret key for token generation.
+      additionalProperties: false
+      description: Request body for the FetchToken endpoint.
+    GetBankIdVerificationProgressResult:
+      type: object
+      properties:
+        isCompleted:
+          type: boolean
+        progress:
+          type:
+          - string
+          - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        qrData:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    AppAuth:
+      type: apiKey
+      description: Application ID
+      name: X-App-Id
+      in: header
+    AppKeyAuth:
+      type: apiKey
+      description: Application Key
+      name: X-App-Key
+      in: header
+    UserAuth:
+      type: apiKey
+      description: User ID
+      name: X-User-Id
+      in: header
+    UserTokenAuth:
+      type: apiKey
+      description: User Token
+      name: X-User-Token
+      in: header

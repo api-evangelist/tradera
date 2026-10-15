@@ -1,0 +1,431 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tradera/main/json-schema/tradera-item-schema.json",
+  "title": "Item",
+  "description": "Property order must match the old ASP.NET service's serialization order exactly.\r\nThe old XmlSerializer serializes public fields before properties, so the former\r\nfields (ShippingOptions through DetailedImageLinks) must come first.",
+  "x-generated": "2026-10-15",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/tradera-openapi.json#/components/schemas/Item",
+  "type": "object",
+  "properties": {
+    "shippingOptions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/ItemShipping"
+      }
+    },
+    "paymentOptions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer",
+        "format": "int32"
+      }
+    },
+    "imageLinks": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "buyerList": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/User"
+      }
+    },
+    "status": {
+      "$ref": "#/$defs/ItemStatus"
+    },
+    "startQuantity": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "remainingQuantity": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "itemType": {
+      "$ref": "#/$defs/ApiItemType"
+    },
+    "detailedImageLinks": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/ImageLink"
+      }
+    },
+    "id": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "vat": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "vatSpecified": {
+      "type": "boolean"
+    },
+    "shortDescription": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ownReferences": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      }
+    },
+    "attributeValues": {
+      "$ref": "#/$defs/AttributeValues"
+    },
+    "itemAttributes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer",
+        "format": "int32"
+      }
+    },
+    "longDescription": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "startDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "categoryId": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "openingBid": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "openingBidSpecified": {
+      "type": "boolean"
+    },
+    "reservePrice": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "reservePriceSpecified": {
+      "type": "boolean"
+    },
+    "reservePriceReached": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "buyItNowPrice": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "buyItNowPriceSpecified": {
+      "type": "boolean"
+    },
+    "nextBid": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "nextBidSpecified": {
+      "type": "boolean"
+    },
+    "paymentCondition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shippingCondition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "acceptsPickup": {
+      "type": "boolean"
+    },
+    "totalBids": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "maxBid": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "maxBidSpecified": {
+      "type": "boolean"
+    },
+    "statusId": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "bold": {
+      "type": "boolean"
+    },
+    "thumbnail": {
+      "type": "boolean"
+    },
+    "highlight": {
+      "type": "boolean"
+    },
+    "featuredItem": {
+      "type": "boolean"
+    },
+    "itemLink": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thumbnailLink": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "acceptedBuyerId": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "paypal": {
+      "type": "boolean"
+    },
+    "paymentTypeId": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "seller": {
+      "$ref": "#/$defs/User"
+    },
+    "maxBidder": {
+      "$ref": "#/$defs/User"
+    },
+    "userSelectedEndDate": {
+      "type": "boolean"
+    },
+    "restarts": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "duration": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "reservePriceManuallySet": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ApiItemType": {
+      "enum": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "type": "integer",
+      "format": "int32"
+    },
+    "AttributeValues": {
+      "type": "object",
+      "properties": {
+        "termAttributeValues": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/TermAttributeValue"
+          }
+        },
+        "numberAttributeValues": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/NumberAttributeValue"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ImageLink": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ItemShipping": {
+      "type": "object",
+      "properties": {
+        "shippingOptionId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "OBSOLETE: Use Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProviderId instead. Takes the same numeric ids.",
+          "format": "int32"
+        },
+        "cost": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "shippingWeight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "shippingWeightSpecified": {
+          "type": "boolean"
+        },
+        "shippingProductId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "shippingProductIdSpecified": {
+          "type": "boolean"
+        },
+        "shippingProviderId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The numeric id of the shipping provider. Call GetShippingOptions (SOAP) or\r\nGET /v4/reference-data/shipping-options (REST) for the providers a seller can use — every\r\nproduct returned carries the ShippingProviderId to send back. The set changes over time,\r\nso read it from the API rather than hard-coding it.\r\n            \r\nDEPRECATED providers, rejected when listing an item: Posten (1), Bussgods (3), UPS (4),\r\nFedEx (5), NotSpecified (10) and PostNordStampDenmark (15). Sellers who used Posten should\r\nuse PostNordParcel (12) or Alternative (6) instead.",
+          "format": "int32"
+        },
+        "sellerSurcharge": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Optional seller-defined surcharge added on top of the shipping product's base cost.\r\nNot yet used to compute the buyer-facing shipping price — Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost is still\r\nthe authoritative, required field today and must be sent. In a future API revision,\r\nTradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost will be removed and the buyer-facing price will be derived from\r\nthe shipping product (identified by Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProductId) adjusted by\r\nTradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerSurcharge and Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerDiscount.",
+          "format": "int32"
+        },
+        "sellerSurchargeSpecified": {
+          "type": "boolean"
+        },
+        "sellerDiscount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Optional seller-defined discount subtracted from the shipping product's base cost.\r\nNot yet used to compute the buyer-facing shipping price — Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost is still\r\nthe authoritative, required field today and must be sent. In a future API revision,\r\nTradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost will be removed and the buyer-facing price will be derived from\r\nthe shipping product (identified by Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProductId) adjusted by\r\nTradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerSurcharge and Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerDiscount.",
+          "format": "int32"
+        },
+        "sellerDiscountSpecified": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ItemStatus": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "NumberAttributeValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "values": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TermAttributeValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "values": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "User": {
+      "type": "object",
+      "additionalProperties": false
+    }
+  }
+}

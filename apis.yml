@@ -1,23 +1,315 @@
 aid: tradera
 name: Tradera
-description: 'Tradera is a company surfaced via the API Evangelist harvest backlog (source: stockholm-trip)
-  and added to the network as a stub for full-pipeline profiling.'
+image: http://static.tradera.net/nextweb/_next/static/media/open-graph-tradera-default.0fjg-i_g1_yum.png
+description: Tradera is Sweden’s largest online marketplace for buying and selling second‑hand goods, ranging from collectibles and fashion to
+  electronics and vehicles. The platform connects millions of users, offering a secure environment for auctions and direct sales, with features
+  such as buyer protection, seller ratings, and integrated payment solutions. Tradera’s vibrant community fosters sustainable commerce by giving
+  items a second life, supporting both hobbyists and everyday shoppers across a wide variety of categories.
 url: https://raw.githubusercontent.com/api-evangelist/tradera/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:stockholm-trip
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-15 (modular-v1; was harvest)
 specificationVersion: '0.20'
 created: '2026-10-15'
 modified: '2026-10-15'
 tags:
-- Company
-apis: []
+- Marketplace
+- E-commerce
+- Secondhand
+- Auctions
+- Sweden
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/tradera-agentic-access.yml
+- type: Spectral
+  url: rules/tradera-rules.yml
+- type: JSONLD
+  url: json-ld/tradera-context.jsonld
+- type: Vocabulary
+  url: vocabulary/tradera-vocabulary.yml
+- type: DataModel
+  url: data-model/tradera-data-model.yml
+- type: Conformance
+  url: conformance/tradera-conformance.yml
+- type: LLMsTxt
+  url: llms/tradera-llms.txt
+- type: WellKnown
+  url: well-known/tradera-well-known.yml
+- type: Hosts
+  url: hosts/tradera-hosts.yml
+- type: Vendors
+  url: vendors/tradera-vendors.yml
+- type: TermsOfService
+  url: https://www.tradera.com/support/se/terms/terms-and-conditions/
+- type: Support
+  url: https://www.tradera.com/support/se/
+- type: SignUp
+  url: https://www.tradera.com/register
+- type: PrivacyPolicy
+  url: https://www.tradera.com/support/se/terms/Privacy-Statement/
+- type: APIReference
+  url: https://api.tradera.com/llms.txt
+- type: GitHubOrganization
+  url: https://github.com/tradera
+- type: Authentication
+  url: authentication/tradera-authentication.yml
+- type: DomainSecurity
+  url: security/tradera-domain-security.yml
 - type: Website
   url: https://tradera.com/
+apis:
+- aid: tradera:tradera-auth-api
+  name: Tradera Auth API
+  description: The Auth API from Tradera — 5 operation(s) for auth.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Auth
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-auth-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-buyer-api
+  name: Tradera Buyer API
+  description: The Buyer API from Tradera — 3 operation(s) for buyer.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Buyer
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-buyer-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-categories-api
+  name: Tradera Categories API
+  description: The Categories API from Tradera — 2 operation(s) for categories.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-categories-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-items-api
+  name: Tradera Items API
+  description: The Items API from Tradera — 5 operation(s) for items.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Items
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-items-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-listings-api
+  name: Tradera Listings API
+  description: The Listings API from Tradera — 24 operation(s) for listings.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Listings
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-listings-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-orders-api
+  name: Tradera Orders API
+  description: The Orders API from Tradera — 5 operation(s) for orders.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-orders-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-program-api
+  name: Tradera Program API
+  description: The Program API from Tradera — 2 operation(s) for program.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Program
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-program-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-reference-data-api
+  name: Tradera Reference Data API
+  description: The Reference Data API from Tradera — 7 operation(s) for reference data.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Reference Data
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-reference-data-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-search-api
+  name: Tradera Search API
+  description: The Search API from Tradera — 5 operation(s) for search.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-search-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-tradera-api-services-core-api
+  name: Tradera Tradera.Api.Services.Core API
+  description: >-
+    The Tradera.Api.Services.Core API from Tradera — 4 operation(s) for tradera.api.services.core.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Tradera.Api.Services.Core
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-tradera-api-services-core-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+- aid: tradera:tradera-users-api
+  name: Tradera Users API
+  description: The Users API from Tradera — 6 operation(s) for users.
+  humanURL: https://api.tradera.com/v4/swagger/index.html
+  baseURL: https://api.tradera.com
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/tradera-users-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shop-item-variant-data-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-item-request-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-shipping-code-schema.json
+  - type: JSONSchema
+    url: json-schema/tradera-seller-order-schema.json
+x-enrichment:
+  date: '2026-10-15'
+  status: enriched
+  artifacts_added: 17
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

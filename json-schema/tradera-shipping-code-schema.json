@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tradera/main/json-schema/tradera-shipping-code-schema.json",
+  "title": "ShippingCode",
+  "description": "How to hand a booked shipment over to the carrier, for shipping options that have no printable\r\nfreight label (for example Instabox) or that are handed over by scanning a QR code.",
+  "x-generated": "2026-10-15",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/tradera-openapi.json#/components/schemas/ShippingCode",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "integer",
+      "description": "The order the shipment belongs to.",
+      "format": "int32"
+    },
+    "shippingProvider": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The shipping provider that carries the shipment, for example Instabox or SchenkerPrivpak."
+    },
+    "labellessShippingCode": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The code to write on the parcel for a labelless shipment. Empty until the carrier has\r\nconfirmed the booking, and for shipping options that use a printed freight label instead."
+    },
+    "qrCodeImageUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "URL to a QR code to show at drop-off. Empty for shipping options that do not use one."
+    },
+    "shipmentNo": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The carrier's shipment number."
+    },
+    "hasFreightLabel": {
+      "type": "boolean",
+      "description": "Whether a printable freight label is available for the shipment through the freight-labels\r\nendpoint."
+    }
+  },
+  "additionalProperties": false
+}

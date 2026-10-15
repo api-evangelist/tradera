@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tradera/main/json-schema/tradera-shop-item-data-schema.json",
+  "title": "ShopItemData",
+  "description": "Shop item data, represents a request to add an shop item to the Tradera system.",
+  "x-generated": "2026-10-15",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/tradera-openapi.json#/components/schemas/ShopItemData",
+  "type": "object",
+  "properties": {
+    "activateDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Date when Shop item will be active on Tradera.\r\nN.B. M:Tradera.Api.Services.Core.Contracts.IRestrictedServiceSoap.GetSellerItems(Tradera.Api.Services.Core.Contracts.Restricted.GetSellerItemsSoapRequest) does not return items for which this date is in the future.",
+      "format": "date-time"
+    },
+    "acceptedBuyerId": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The types of Buyers allowed to buy the Item.\r\nPossible values: 1 = Sweden, 3 = International, 4 = EU.\r\nSee the method !:PublicService.GetAcceptedBidderTypes for the authoritative list.",
+      "format": "int32"
+    },
+    "categoryId": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The category Id. See the method\r\n!:PublicService.GetCategories for all available categories.",
+      "format": "int32"
+    },
+    "deactivateDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Date when Shop item will be deactivated on Tradera.",
+      "format": "date-time"
+    },
+    "itemAttributes": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "description": "Item attributes like: New, Used"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "A long (7000 chars) description of the item."
+    },
+    "paymentCondition": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Describes Payment condition for this Item (500 chars)"
+    },
+    "price": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Shop item price.",
+      "format": "int32"
+    },
+    "quantity": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Modify the available quantity for this Item. This is a delta and will\r\nbe added to the current quantity. Use a negative value to decrease the\r\nquantity.",
+      "format": "int32"
+    },
+    "absoluteQuantity": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "Set the quantity to an absolute value, regardless of the current quantity.\r\nIt is not allowed to provide both AbsoluteQuantity and Quantity in the\r\nsame request.",
+      "format": "int32"
+    },
+    "shippingCondition": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Describes Shipping condition for this Item (500 chars)"
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The title (short description) of the item (80 chars)."
+    },
+    "vat": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "VAT for the item. The VAT value can be retrieved from API method !:PublicService.GetItemFieldValues.",
+      "format": "int32"
+    },
+    "shippingOptions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/ItemShipping"
+      },
+      "description": "A list of shipping options offered to the buyer of the Item. At most 3 shipping options are allowed if Pickup is included. Otherwise, at most 2 shipping options are allowed. See Tradera.Api.Services.Core.Contracts.Entities.ItemShipping."
+    },
+    "paymentOptionIds": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "integer",
+        "format": "int32"
+      },
+      "description": "An array of ids of Payment types (more than one can be specified).\r\nSee the method !:PublicService.GetItemFieldValues for a list."
+    },
+    "ownReferences": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "description": "The sellers own references for this Item (60 chars)."
+    },
+    "itemImages": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/ItemImageData"
+      },
+      "description": "Shop item images, an array of Tradera.Api.Services.Core.Contracts.Entities.ItemImageData objects (max 40 images).\r\nMax accepted size: 4MB"
+    },
+    "externalId": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "description": "The id of the item in external system if there is any (optional).",
+      "format": "int32"
+    },
+    "attributeValues": {
+      "$ref": "#/$defs/ItemAttributeValues"
+    },
+    "descriptionLanguageCodeIso2": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "The description language code of the item."
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ImageFormat": {
+      "enum": [
+        0,
+        1,
+        2
+      ],
+      "type": "integer",
+      "description": "Specifies different image formats.",
+      "format": "int32"
+    },
+    "ItemAttributeValues": {
+      "type": "object",
+      "properties": {
+        "terms": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/TermValues"
+          }
+        },
+        "numbers": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/NumberValues"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ItemImageData": {
+      "type": "object",
+      "properties": {
+        "hasMega": {
+          "type": "boolean",
+          "description": "If the Image should have a Mega image created when processed."
+        },
+        "format": {
+          "$ref": "#/$defs/ImageFormat"
+        },
+        "data": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Image data (byte-array / base64 encoded).",
+          "format": "byte"
+        },
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Name of the image (optional)."
+        }
+      },
+      "additionalProperties": false,
+      "description": "Holds information for an item image."
+    },
+    "ItemShipping": {
+      "type": "object",
+      "properties": {
+        "shippingOptionId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "OBSOLETE: Use Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProviderId instead. Takes the same numeric ids.",
+          "format": "int32"
+        },
+        "cost": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "shippingWeight": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "format": "double"
+        },
+        "shippingWeightSpecified": {
+          "type": "boolean"
+        },
+        "shippingProductId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int32"
+        },
+        "shippingProductIdSpecified": {
+          "type": "boolean"
+        },
+        "shippingProviderId": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The numeric id of the shipping provider. Call GetShippingOptions (SOAP) or\r\nGET /v4/reference-data/shipping-options (REST) for the providers a seller can use — every\r\nproduct returned carries the ShippingProviderId to send back. The set changes over time,\r\nso read it from the API rather than hard-coding it.\r\n            \r\nDEPRECATED providers, rejected when listing an item: Posten (1), Bussgods (3), UPS (4),\r\nFedEx (5), NotSpecified (10) and PostNordStampDenmark (15). Sellers who used Posten should\r\nuse PostNordParcel (12) or Alternative (6) instead.",
+          "format": "int32"
+        },
+        "sellerSurcharge": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Optional seller-defined surcharge added on top of the shipping product's base cost.\r\nNot yet used to compute the buyer-facing shipping price — Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost is still\r\nthe authoritative, required field today and must be sent. In a future API revision,\r\nTradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost will be removed and the buyer-facing price will be derived from\r\nthe shipping product (identified by Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProductId) adjusted by\r\nTradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerSurcharge and Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerDiscount.",
+          "format": "int32"
+        },
+        "sellerSurchargeSpecified": {
+          "type": "boolean"
+        },
+        "sellerDiscount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "Optional seller-defined discount subtracted from the shipping product's base cost.\r\nNot yet used to compute the buyer-facing shipping price — Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost is still\r\nthe authoritative, required field today and must be sent. In a future API revision,\r\nTradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost will be removed and the buyer-facing price will be derived from\r\nthe shipping product (identified by Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProductId) adjusted by\r\nTradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerSurcharge and Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerDiscount.",
+          "format": "int32"
+        },
+        "sellerDiscountSpecified": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "NumberValues": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "values": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "TermValues": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "values": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

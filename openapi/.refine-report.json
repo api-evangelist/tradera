@@ -1,0 +1,40 @@
+{
+  "provider": "tradera",
+  "sources": [
+    "tradera-openapi.json"
+  ],
+  "outputs": [
+    "tradera-auth-api-openapi.yml",
+    "tradera-buyer-api-openapi.yml",
+    "tradera-categories-api-openapi.yml",
+    "tradera-items-api-openapi.yml",
+    "tradera-listings-api-openapi.yml",
+    "tradera-orders-api-openapi.yml",
+    "tradera-program-api-openapi.yml",
+    "tradera-reference-data-api-openapi.yml",
+    "tradera-search-api-openapi.yml",
+    "tradera-tradera-api-services-core-api-openapi.yml",
+    "tradera-users-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/tradera-openapi.json"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "tradera-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "tradera-openapi.json: declared missing tag: Auth",
+    "tradera-openapi.json: declared missing tag: Buyer",
+    "tradera-openapi.json: declared missing tag: Categories",
+    "tradera-openapi.json: declared missing tag: Items",
+    "tradera-openapi.json: declared missing tag: Listings",
+    "tradera-openapi.json: declared missing tag: Orders",
+    "tradera-openapi.json: declared missing tag: Program",
+    "tradera-openapi.json: declared missing tag: Reference Data",
+    "tradera-openapi.json: declared missing tag: Search",
+    "tradera-openapi.json: declared missing tag: Tradera.Api.Services.Core",
+    "tradera-openapi.json: declared missing tag: Users",
+    "apis.yml register: written (+11 apis, 11 total)"
+  ],
+  "skipped": []
+}

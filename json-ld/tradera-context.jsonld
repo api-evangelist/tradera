@@ -1,0 +1,1272 @@
+{
+  "@context": {
+    "@vocab": "https://tradera.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "tradera": "https://tradera.com/schema#",
+    "ActiveFilter": "tradera:ActiveFilter",
+    "AddItemCampaignCodeRequest": "tradera:AddItemCampaignCodeRequest",
+    "campaignCode": {
+      "@id": "tradera:campaignCode",
+      "@type": "xsd:string"
+    },
+    "AddItemImageRequest": "tradera:AddItemImageRequest",
+    "imageData": {
+      "@id": "tradera:imageData",
+      "@type": "xsd:string"
+    },
+    "imageFormat": {
+      "@id": "tradera:imageFormat",
+      "@type": "@id"
+    },
+    "hasMega": {
+      "@id": "tradera:hasMega",
+      "@type": "xsd:boolean"
+    },
+    "AddItemXmlRequest": "tradera:AddItemXmlRequest",
+    "createItemRequestXml": {
+      "@id": "tradera:createItemRequestXml",
+      "@type": "xsd:string"
+    },
+    "ApiItemType": "tradera:ApiItemType",
+    "AttributeDefinition": "tradera:AttributeDefinition",
+    "id": {
+      "@id": "tradera:id",
+      "@type": "xsd:integer"
+    },
+    "name": {
+      "@id": "tradera:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "tradera:description",
+      "@type": "xsd:string"
+    },
+    "maxNumberOfValues": {
+      "@id": "tradera:maxNumberOfValues",
+      "@type": "xsd:integer"
+    },
+    "minNumberOfValues": {
+      "@id": "tradera:minNumberOfValues",
+      "@type": "xsd:integer"
+    },
+    "possibleTermValues": {
+      "@id": "tradera:possibleTermValues",
+      "@container": "@list"
+    },
+    "key": {
+      "@id": "tradera:key",
+      "@type": "xsd:string"
+    },
+    "attributeType": {
+      "@id": "tradera:attributeType",
+      "@type": "xsd:string"
+    },
+    "valueFormatting": {
+      "@id": "tradera:valueFormatting",
+      "@type": "xsd:string"
+    },
+    "AttributeValues": "tradera:AttributeValues",
+    "termAttributeValues": {
+      "@id": "tradera:termAttributeValues",
+      "@container": "@list"
+    },
+    "numberAttributeValues": {
+      "@id": "tradera:numberAttributeValues",
+      "@container": "@list"
+    },
+    "BeginBankIdOnFileVerificationResult": "tradera:BeginBankIdOnFileVerificationResult",
+    "bankIdOrderRef": {
+      "@id": "tradera:bankIdOrderRef",
+      "@type": "xsd:string"
+    },
+    "error": {
+      "@id": "tradera:error",
+      "@type": "xsd:string"
+    },
+    "autoStartToken": {
+      "@id": "tradera:autoStartToken",
+      "@type": "xsd:string"
+    },
+    "BeginBankIdVerificationResult": "tradera:BeginBankIdVerificationResult",
+    "qrData": {
+      "@id": "tradera:qrData",
+      "@type": "xsd:string"
+    },
+    "BinPrice": "tradera:BinPrice",
+    "price": {
+      "@id": "tradera:price",
+      "@type": "xsd:integer"
+    },
+    "BuyRequest": "tradera:BuyRequest",
+    "itemId": {
+      "@id": "tradera:itemId",
+      "@type": "xsd:integer"
+    },
+    "buyAmount": {
+      "@id": "tradera:buyAmount",
+      "@type": "xsd:integer"
+    },
+    "BuyResult": "tradera:BuyResult",
+    "nextBid": {
+      "@id": "tradera:nextBid",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "tradera:status",
+      "@type": "@id"
+    },
+    "BuyStatus": "tradera:BuyStatus",
+    "BuyerTransaction": "tradera:BuyerTransaction",
+    "date": {
+      "@id": "tradera:date",
+      "@type": "xsd:dateTime"
+    },
+    "amount": {
+      "@id": "tradera:amount",
+      "@type": "xsd:integer"
+    },
+    "lastUpdatedDate": {
+      "@id": "tradera:lastUpdatedDate",
+      "@type": "xsd:dateTime"
+    },
+    "isMarkedAsPaidConfirmed": {
+      "@id": "tradera:isMarkedAsPaidConfirmed",
+      "@type": "xsd:boolean"
+    },
+    "isMarkedAsShipped": {
+      "@id": "tradera:isMarkedAsShipped",
+      "@type": "xsd:boolean"
+    },
+    "isShippingBooked": {
+      "@id": "tradera:isShippingBooked",
+      "@type": "xsd:boolean"
+    },
+    "isFeedbackLeftBySeller": {
+      "@id": "tradera:isFeedbackLeftBySeller",
+      "@type": "xsd:boolean"
+    },
+    "isFeedbackLeftByBuyer": {
+      "@id": "tradera:isFeedbackLeftByBuyer",
+      "@type": "xsd:boolean"
+    },
+    "buyer": {
+      "@id": "tradera:buyer",
+      "@type": "@id"
+    },
+    "seller": {
+      "@id": "tradera:seller",
+      "@type": "@id"
+    },
+    "item": {
+      "@id": "tradera:item",
+      "@type": "@id"
+    },
+    "isMarkedAsPaid": {
+      "@id": "tradera:isMarkedAsPaid",
+      "@type": "xsd:boolean"
+    },
+    "CancelBankIdVerificationRequest": "tradera:CancelBankIdVerificationRequest",
+    "DetailedSellerRating": "tradera:DetailedSellerRating",
+    "itemAsDescribedCount": {
+      "@id": "tradera:itemAsDescribedCount",
+      "@type": "xsd:integer"
+    },
+    "itemAsDescribedAverage": {
+      "@id": "tradera:itemAsDescribedAverage",
+      "@type": "xsd:decimal"
+    },
+    "commResponsivenessCount": {
+      "@id": "tradera:commResponsivenessCount",
+      "@type": "xsd:integer"
+    },
+    "commResponsivenessAverage": {
+      "@id": "tradera:commResponsivenessAverage",
+      "@type": "xsd:decimal"
+    },
+    "shippingTimeCount": {
+      "@id": "tradera:shippingTimeCount",
+      "@type": "xsd:integer"
+    },
+    "shippingTimeAverage": {
+      "@id": "tradera:shippingTimeAverage",
+      "@type": "xsd:decimal"
+    },
+    "shippingHandlingChargesCount": {
+      "@id": "tradera:shippingHandlingChargesCount",
+      "@type": "xsd:integer"
+    },
+    "shippingHandlingChargesAverage": {
+      "@id": "tradera:shippingHandlingChargesAverage",
+      "@type": "xsd:decimal"
+    },
+    "FeedbackRating": "tradera:FeedbackRating",
+    "FeedbackRole": "tradera:FeedbackRole",
+    "FeedbackSummaryItem": "tradera:FeedbackSummaryItem",
+    "totalPositive": {
+      "@id": "tradera:totalPositive",
+      "@type": "xsd:integer"
+    },
+    "totalNegative": {
+      "@id": "tradera:totalNegative",
+      "@type": "xsd:integer"
+    },
+    "FeedbackType": "tradera:FeedbackType",
+    "FetchTokenRequest": "tradera:FetchTokenRequest",
+    "userId": {
+      "@id": "tradera:userId",
+      "@type": "xsd:integer"
+    },
+    "secretKey": {
+      "@id": "tradera:secretKey",
+      "@type": "xsd:string"
+    },
+    "FreightLabel": "tradera:FreightLabel",
+    "orderId": {
+      "@id": "tradera:orderId",
+      "@type": "xsd:integer"
+    },
+    "freightLabelContent": {
+      "@id": "tradera:freightLabelContent",
+      "@type": "xsd:string"
+    },
+    "GetBankIdVerificationProgressResult": "tradera:GetBankIdVerificationProgressResult",
+    "isCompleted": {
+      "@id": "tradera:isCompleted",
+      "@type": "xsd:boolean"
+    },
+    "progress": {
+      "@id": "tradera:progress",
+      "@type": "xsd:string"
+    },
+    "GetFeedback": "tradera:GetFeedback",
+    "feedbackRole": {
+      "@id": "tradera:feedbackRole",
+      "@type": "@id"
+    },
+    "feedbackRating": {
+      "@id": "tradera:feedbackRating",
+      "@type": "@id"
+    },
+    "alias": {
+      "@id": "tradera:alias",
+      "@type": "xsd:string"
+    },
+    "comment": {
+      "@id": "tradera:comment",
+      "@type": "xsd:string"
+    },
+    "created": {
+      "@id": "tradera:created",
+      "@type": "xsd:dateTime"
+    },
+    "totalRating": {
+      "@id": "tradera:totalRating",
+      "@type": "xsd:integer"
+    },
+    "GetFeedbackRole": "tradera:GetFeedbackRole",
+    "GetFeedbackSummaryResponse": "tradera:GetFeedbackSummaryResponse",
+    "lastMonth": {
+      "@id": "tradera:lastMonth",
+      "@type": "@id"
+    },
+    "lastSixMonth": {
+      "@id": "tradera:lastSixMonth",
+      "@type": "@id"
+    },
+    "lastTwelveMonth": {
+      "@id": "tradera:lastTwelveMonth",
+      "@type": "@id"
+    },
+    "GetMemberPaymentOptionsResult": "tradera:GetMemberPaymentOptionsResult",
+    "paymentOptions": {
+      "@id": "tradera:paymentOptions",
+      "@container": "@list"
+    },
+    "GetShippingOptionsResponse": "tradera:GetShippingOptionsResponse",
+    "productsPerWeightSpan": {
+      "@id": "tradera:productsPerWeightSpan",
+      "@container": "@list"
+    },
+    "ImageFormat": "tradera:ImageFormat",
+    "ImageLink": "tradera:ImageLink",
+    "url": {
+      "@id": "tradera:url",
+      "@type": "xsd:string"
+    },
+    "format": {
+      "@id": "tradera:format",
+      "@type": "xsd:string"
+    },
+    "Item": "tradera:Item",
+    "shippingOptions": {
+      "@id": "tradera:shippingOptions",
+      "@container": "@list"
+    },
+    "imageLinks": {
+      "@id": "tradera:imageLinks",
+      "@container": "@list"
+    },
+    "buyerList": {
+      "@id": "tradera:buyerList",
+      "@container": "@list"
+    },
+    "startQuantity": {
+      "@id": "tradera:startQuantity",
+      "@type": "xsd:integer"
+    },
+    "remainingQuantity": {
+      "@id": "tradera:remainingQuantity",
+      "@type": "xsd:integer"
+    },
+    "itemType": {
+      "@id": "tradera:itemType",
+      "@type": "@id"
+    },
+    "detailedImageLinks": {
+      "@id": "tradera:detailedImageLinks",
+      "@container": "@list"
+    },
+    "vat": {
+      "@id": "tradera:vat",
+      "@type": "xsd:integer"
+    },
+    "vatSpecified": {
+      "@id": "tradera:vatSpecified",
+      "@type": "xsd:boolean"
+    },
+    "shortDescription": {
+      "@id": "tradera:shortDescription",
+      "@type": "xsd:string"
+    },
+    "ownReferences": {
+      "@id": "tradera:ownReferences",
+      "@container": "@list"
+    },
+    "attributeValues": {
+      "@id": "tradera:attributeValues",
+      "@type": "@id"
+    },
+    "itemAttributes": {
+      "@id": "tradera:itemAttributes",
+      "@container": "@list"
+    },
+    "longDescription": {
+      "@id": "tradera:longDescription",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "tradera:startDate",
+      "@type": "xsd:dateTime"
+    },
+    "endDate": {
+      "@id": "tradera:endDate",
+      "@type": "xsd:dateTime"
+    },
+    "categoryId": {
+      "@id": "tradera:categoryId",
+      "@type": "xsd:integer"
+    },
+    "openingBid": {
+      "@id": "tradera:openingBid",
+      "@type": "xsd:integer"
+    },
+    "openingBidSpecified": {
+      "@id": "tradera:openingBidSpecified",
+      "@type": "xsd:boolean"
+    },
+    "reservePrice": {
+      "@id": "tradera:reservePrice",
+      "@type": "xsd:integer"
+    },
+    "reservePriceSpecified": {
+      "@id": "tradera:reservePriceSpecified",
+      "@type": "xsd:boolean"
+    },
+    "reservePriceReached": {
+      "@id": "tradera:reservePriceReached",
+      "@type": "xsd:boolean"
+    },
+    "buyItNowPrice": {
+      "@id": "tradera:buyItNowPrice",
+      "@type": "xsd:integer"
+    },
+    "buyItNowPriceSpecified": {
+      "@id": "tradera:buyItNowPriceSpecified",
+      "@type": "xsd:boolean"
+    },
+    "nextBidSpecified": {
+      "@id": "tradera:nextBidSpecified",
+      "@type": "xsd:boolean"
+    },
+    "paymentCondition": {
+      "@id": "tradera:paymentCondition",
+      "@type": "xsd:string"
+    },
+    "shippingCondition": {
+      "@id": "tradera:shippingCondition",
+      "@type": "xsd:string"
+    },
+    "acceptsPickup": {
+      "@id": "tradera:acceptsPickup",
+      "@type": "xsd:boolean"
+    },
+    "totalBids": {
+      "@id": "tradera:totalBids",
+      "@type": "xsd:integer"
+    },
+    "maxBid": {
+      "@id": "tradera:maxBid",
+      "@type": "xsd:integer"
+    },
+    "maxBidSpecified": {
+      "@id": "tradera:maxBidSpecified",
+      "@type": "xsd:boolean"
+    },
+    "statusId": {
+      "@id": "tradera:statusId",
+      "@type": "xsd:integer"
+    },
+    "bold": {
+      "@id": "tradera:bold",
+      "@type": "xsd:boolean"
+    },
+    "thumbnail": {
+      "@id": "tradera:thumbnail",
+      "@type": "xsd:boolean"
+    },
+    "highlight": {
+      "@id": "tradera:highlight",
+      "@type": "xsd:boolean"
+    },
+    "featuredItem": {
+      "@id": "tradera:featuredItem",
+      "@type": "xsd:boolean"
+    },
+    "itemLink": {
+      "@id": "tradera:itemLink",
+      "@type": "xsd:string"
+    },
+    "thumbnailLink": {
+      "@id": "tradera:thumbnailLink",
+      "@type": "xsd:string"
+    },
+    "acceptedBuyerId": {
+      "@id": "tradera:acceptedBuyerId",
+      "@type": "xsd:integer"
+    },
+    "paypal": {
+      "@id": "tradera:paypal",
+      "@type": "xsd:boolean"
+    },
+    "paymentTypeId": {
+      "@id": "tradera:paymentTypeId",
+      "@type": "xsd:integer"
+    },
+    "maxBidder": {
+      "@id": "tradera:maxBidder",
+      "@type": "@id"
+    },
+    "userSelectedEndDate": {
+      "@id": "tradera:userSelectedEndDate",
+      "@type": "xsd:boolean"
+    },
+    "restarts": {
+      "@id": "tradera:restarts",
+      "@type": "xsd:integer"
+    },
+    "duration": {
+      "@id": "tradera:duration",
+      "@type": "xsd:integer"
+    },
+    "reservePriceManuallySet": {
+      "@id": "tradera:reservePriceManuallySet",
+      "@type": "xsd:boolean"
+    },
+    "ItemAddedDescription": "tradera:ItemAddedDescription",
+    "createdDate": {
+      "@id": "tradera:createdDate",
+      "@type": "xsd:dateTime"
+    },
+    "ItemAttributeValues": "tradera:ItemAttributeValues",
+    "terms": {
+      "@id": "tradera:terms",
+      "@container": "@list"
+    },
+    "numbers": {
+      "@id": "tradera:numbers",
+      "@container": "@list"
+    },
+    "ItemFieldsResponse": "tradera:ItemFieldsResponse",
+    "paymentTypes": {
+      "@id": "tradera:paymentTypes",
+      "@container": "@list"
+    },
+    "shippingTypes": {
+      "@id": "tradera:shippingTypes",
+      "@container": "@list"
+    },
+    "ItemImageData": "tradera:ItemImageData",
+    "data": {
+      "@id": "tradera:data",
+      "@type": "xsd:string"
+    },
+    "ItemQuickInfo": "tradera:ItemQuickInfo",
+    "creationDate": {
+      "@id": "tradera:creationDate",
+      "@type": "xsd:dateTime"
+    },
+    "ItemRequest": "tradera:ItemRequest",
+    "title": {
+      "@id": "tradera:title",
+      "@type": "xsd:string"
+    },
+    "startPrice": {
+      "@id": "tradera:startPrice",
+      "@type": "xsd:integer"
+    },
+    "paymentOptionIds": {
+      "@id": "tradera:paymentOptionIds",
+      "@container": "@list"
+    },
+    "acceptedBidderId": {
+      "@id": "tradera:acceptedBidderId",
+      "@type": "xsd:integer"
+    },
+    "expoItemIds": {
+      "@id": "tradera:expoItemIds",
+      "@container": "@list"
+    },
+    "customEndDate": {
+      "@id": "tradera:customEndDate",
+      "@type": "xsd:dateTime"
+    },
+    "autoCommit": {
+      "@id": "tradera:autoCommit",
+      "@type": "xsd:boolean"
+    },
+    "descriptionLanguageCodeIso2": {
+      "@id": "tradera:descriptionLanguageCodeIso2",
+      "@type": "xsd:string"
+    },
+    "restartedFromItemId": {
+      "@id": "tradera:restartedFromItemId",
+      "@type": "xsd:integer"
+    },
+    "ItemRestarts": "tradera:ItemRestarts",
+    "lastRestartedItemId": {
+      "@id": "tradera:lastRestartedItemId",
+      "@type": "xsd:integer"
+    },
+    "ancestorItemId": {
+      "@id": "tradera:ancestorItemId",
+      "@type": "xsd:integer"
+    },
+    "restartedItems": {
+      "@id": "tradera:restartedItems",
+      "@container": "@list"
+    },
+    "ItemShipping": "tradera:ItemShipping",
+    "shippingOptionId": {
+      "@id": "tradera:shippingOptionId",
+      "@type": "xsd:integer"
+    },
+    "cost": {
+      "@id": "tradera:cost",
+      "@type": "xsd:integer"
+    },
+    "shippingWeight": {
+      "@id": "tradera:shippingWeight",
+      "@type": "xsd:decimal"
+    },
+    "shippingWeightSpecified": {
+      "@id": "tradera:shippingWeightSpecified",
+      "@type": "xsd:boolean"
+    },
+    "shippingProductId": {
+      "@id": "tradera:shippingProductId",
+      "@type": "xsd:integer"
+    },
+    "shippingProductIdSpecified": {
+      "@id": "tradera:shippingProductIdSpecified",
+      "@type": "xsd:boolean"
+    },
+    "shippingProviderId": {
+      "@id": "tradera:shippingProviderId",
+      "@type": "xsd:integer"
+    },
+    "sellerSurcharge": {
+      "@id": "tradera:sellerSurcharge",
+      "@type": "xsd:integer"
+    },
+    "sellerSurchargeSpecified": {
+      "@id": "tradera:sellerSurchargeSpecified",
+      "@type": "xsd:boolean"
+    },
+    "sellerDiscount": {
+      "@id": "tradera:sellerDiscount",
+      "@type": "xsd:integer"
+    },
+    "sellerDiscountSpecified": {
+      "@id": "tradera:sellerDiscountSpecified",
+      "@type": "xsd:boolean"
+    },
+    "ItemTypeFilter": "tradera:ItemTypeFilter",
+    "LeaveFeedbackRequest": "tradera:LeaveFeedbackRequest",
+    "type": {
+      "@id": "tradera:type",
+      "@type": "@id"
+    },
+    "MemberPaymentOption": "tradera:MemberPaymentOption",
+    "displayName": {
+      "@id": "tradera:displayName",
+      "@type": "xsd:string"
+    },
+    "NumberAttributeValue": "tradera:NumberAttributeValue",
+    "values": {
+      "@id": "tradera:values",
+      "@container": "@list"
+    },
+    "NumberValues": "tradera:NumberValues",
+    "ProductsPerWeightSpan": "tradera:ProductsPerWeightSpan",
+    "weight": {
+      "@id": "tradera:weight",
+      "@type": "xsd:decimal"
+    },
+    "products": {
+      "@id": "tradera:products",
+      "@container": "@list"
+    },
+    "QueuedRequestResponse": "tradera:QueuedRequestResponse",
+    "requestId": {
+      "@id": "tradera:requestId",
+      "@type": "xsd:integer"
+    },
+    "RequestResult": "tradera:RequestResult",
+    "resultCode": {
+      "@id": "tradera:resultCode",
+      "@type": "@id"
+    },
+    "message": {
+      "@id": "tradera:message",
+      "@type": "xsd:string"
+    },
+    "ReservedPrice": "tradera:ReservedPrice",
+    "RestartItemResult": "tradera:RestartItemResult",
+    "isSuccessful": {
+      "@id": "tradera:isSuccessful",
+      "@type": "xsd:boolean"
+    },
+    "oldItemId": {
+      "@id": "tradera:oldItemId",
+      "@type": "xsd:integer"
+    },
+    "newItemId": {
+      "@id": "tradera:newItemId",
+      "@type": "xsd:integer"
+    },
+    "validationError": {
+      "@id": "tradera:validationError",
+      "@type": "xsd:string"
+    },
+    "RestartedItem": "tradera:RestartedItem",
+    "restartedItemId": {
+      "@id": "tradera:restartedItemId",
+      "@type": "xsd:integer"
+    },
+    "restartedAsItemId": {
+      "@id": "tradera:restartedAsItemId",
+      "@type": "xsd:integer"
+    },
+    "restartedDate": {
+      "@id": "tradera:restartedDate",
+      "@type": "xsd:dateTime"
+    },
+    "ResultCode": "tradera:ResultCode",
+    "SellerInfo": "tradera:SellerInfo",
+    "detailedSellerRating": {
+      "@id": "tradera:detailedSellerRating",
+      "@type": "@id"
+    },
+    "positiveFeedbackPercent": {
+      "@id": "tradera:positiveFeedbackPercent",
+      "@type": "xsd:integer"
+    },
+    "personalMessage": {
+      "@id": "tradera:personalMessage",
+      "@type": "xsd:string"
+    },
+    "isCompany": {
+      "@id": "tradera:isCompany",
+      "@type": "xsd:boolean"
+    },
+    "hasShop": {
+      "@id": "tradera:hasShop",
+      "@type": "xsd:boolean"
+    },
+    "SellerOrder": "tradera:SellerOrder",
+    "expiresDate": {
+      "@id": "tradera:expiresDate",
+      "@type": "xsd:dateTime"
+    },
+    "subTotal": {
+      "@id": "tradera:subTotal",
+      "@type": "xsd:integer"
+    },
+    "shipTo": {
+      "@id": "tradera:shipTo",
+      "@type": "@id"
+    },
+    "items": {
+      "@id": "tradera:items",
+      "@container": "@list"
+    },
+    "sellerOrderPayments": {
+      "@id": "tradera:sellerOrderPayments",
+      "@container": "@list"
+    },
+    "shippingType": {
+      "@id": "tradera:shippingType",
+      "@type": "xsd:string"
+    },
+    "shippingCost": {
+      "@id": "tradera:shippingCost",
+      "@type": "xsd:integer"
+    },
+    "purchaseOrderId": {
+      "@id": "tradera:purchaseOrderId",
+      "@type": "xsd:string"
+    },
+    "SellerOrderAddress": "tradera:SellerOrderAddress",
+    "addressLine1": {
+      "@id": "tradera:addressLine1",
+      "@type": "xsd:string"
+    },
+    "addressLine2": {
+      "@id": "tradera:addressLine2",
+      "@type": "xsd:string"
+    },
+    "zipCode": {
+      "@id": "tradera:zipCode",
+      "@type": "xsd:string"
+    },
+    "city": {
+      "@id": "tradera:city",
+      "@type": "xsd:string"
+    },
+    "countryName": {
+      "@id": "tradera:countryName",
+      "@type": "xsd:string"
+    },
+    "SellerOrderItem": "tradera:SellerOrderItem",
+    "quantity": {
+      "@id": "tradera:quantity",
+      "@type": "xsd:integer"
+    },
+    "unitPrice": {
+      "@id": "tradera:unitPrice",
+      "@type": "xsd:integer"
+    },
+    "vatRate": {
+      "@id": "tradera:vatRate",
+      "@type": "xsd:integer"
+    },
+    "merchantPartNumber": {
+      "@id": "tradera:merchantPartNumber",
+      "@type": "xsd:string"
+    },
+    "SellerOrderKeyValuePair": "tradera:SellerOrderKeyValuePair",
+    "value": {
+      "@id": "tradera:value",
+      "@type": "xsd:string"
+    },
+    "SellerOrderPayment": "tradera:SellerOrderPayment",
+    "paymentType": {
+      "@id": "tradera:paymentType",
+      "@type": "xsd:string"
+    },
+    "reference": {
+      "@id": "tradera:reference",
+      "@type": "xsd:string"
+    },
+    "additionalInfo": {
+      "@id": "tradera:additionalInfo",
+      "@container": "@list"
+    },
+    "paidDate": {
+      "@id": "tradera:paidDate",
+      "@type": "xsd:dateTime"
+    },
+    "paymentCost": {
+      "@id": "tradera:paymentCost",
+      "@type": "xsd:integer"
+    },
+    "SellerOrderQueryDateMode": "tradera:SellerOrderQueryDateMode",
+    "SellerOrderUser": "tradera:SellerOrderUser",
+    "firstName": {
+      "@id": "tradera:firstName",
+      "@type": "xsd:string"
+    },
+    "lastName": {
+      "@id": "tradera:lastName",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "tradera:email",
+      "@type": "xsd:string"
+    },
+    "phone": {
+      "@id": "tradera:phone",
+      "@type": "xsd:string"
+    },
+    "SetActivateDateOnShopItemsError": "tradera:SetActivateDateOnShopItemsError",
+    "errorMessage": {
+      "@id": "tradera:errorMessage",
+      "@type": "xsd:string"
+    },
+    "SetActivateDateOnShopItemsRequest": "tradera:SetActivateDateOnShopItemsRequest",
+    "shopItems": {
+      "@id": "tradera:shopItems",
+      "@container": "@list"
+    },
+    "SetActivateDateOnShopItemsResult": "tradera:SetActivateDateOnShopItemsResult",
+    "queuedRequestResponses": {
+      "@id": "tradera:queuedRequestResponses",
+      "@container": "@list"
+    },
+    "validationErrors": {
+      "@id": "tradera:validationErrors",
+      "@container": "@list"
+    },
+    "SetActivateDateShopItem": "tradera:SetActivateDateShopItem",
+    "activateDate": {
+      "@id": "tradera:activateDate",
+      "@type": "xsd:dateTime"
+    },
+    "SetPriceOnShopItemsError": "tradera:SetPriceOnShopItemsError",
+    "SetPriceOnShopItemsRequest": "tradera:SetPriceOnShopItemsRequest",
+    "SetPriceOnShopItemsResult": "tradera:SetPriceOnShopItemsResult",
+    "SetPriceShopItem": "tradera:SetPriceShopItem",
+    "SetPricesNonShopItem": "tradera:SetPricesNonShopItem",
+    "openingPrice": {
+      "@id": "tradera:openingPrice",
+      "@type": "xsd:integer"
+    },
+    "reservedPrice": {
+      "@id": "tradera:reservedPrice",
+      "@type": "@id"
+    },
+    "binPrice": {
+      "@id": "tradera:binPrice",
+      "@type": "@id"
+    },
+    "SetPricesOnNonShopItemsError": "tradera:SetPricesOnNonShopItemsError",
+    "SetPricesOnNonShopItemsResult": "tradera:SetPricesOnNonShopItemsResult",
+    "SetQuantityOnShopItemError": "tradera:SetQuantityOnShopItemError",
+    "SetQuantityOnShopItemsRequest": "tradera:SetQuantityOnShopItemsRequest",
+    "SetQuantityOnShopItemsResult": "tradera:SetQuantityOnShopItemsResult",
+    "successfulUpdates": {
+      "@id": "tradera:successfulUpdates",
+      "@type": "xsd:integer"
+    },
+    "SetQuantityShopItem": "tradera:SetQuantityShopItem",
+    "SetSellerOrderAsShippedResponse": "tradera:SetSellerOrderAsShippedResponse",
+    "ShippingCode": "tradera:ShippingCode",
+    "shippingProvider": {
+      "@id": "tradera:shippingProvider",
+      "@type": "xsd:string"
+    },
+    "labellessShippingCode": {
+      "@id": "tradera:labellessShippingCode",
+      "@type": "xsd:string"
+    },
+    "qrCodeImageUrl": {
+      "@id": "tradera:qrCodeImageUrl",
+      "@type": "xsd:string"
+    },
+    "shipmentNo": {
+      "@id": "tradera:shipmentNo",
+      "@type": "xsd:string"
+    },
+    "hasFreightLabel": {
+      "@id": "tradera:hasFreightLabel",
+      "@type": "xsd:boolean"
+    },
+    "ShippingDeliveryInformation": "tradera:ShippingDeliveryInformation",
+    "mailBoxWithServicePointBackup": {
+      "@id": "tradera:mailBoxWithServicePointBackup",
+      "@type": "xsd:boolean"
+    },
+    "servicePoint": {
+      "@id": "tradera:servicePoint",
+      "@type": "xsd:boolean"
+    },
+    "canChangeServicePoint": {
+      "@id": "tradera:canChangeServicePoint",
+      "@type": "xsd:boolean"
+    },
+    "isTraceable": {
+      "@id": "tradera:isTraceable",
+      "@type": "xsd:boolean"
+    },
+    "isParcelBoxDeliveryPossible": {
+      "@id": "tradera:isParcelBoxDeliveryPossible",
+      "@type": "xsd:boolean"
+    },
+    "estimatedDeliveryTime": {
+      "@id": "tradera:estimatedDeliveryTime",
+      "@type": "@id"
+    },
+    "insurance": {
+      "@id": "tradera:insurance",
+      "@type": "@id"
+    },
+    "ShippingEstimatedDeliveryTime": "tradera:ShippingEstimatedDeliveryTime",
+    "minWeekdays": {
+      "@id": "tradera:minWeekdays",
+      "@type": "xsd:integer"
+    },
+    "maxWeekdays": {
+      "@id": "tradera:maxWeekdays",
+      "@type": "xsd:integer"
+    },
+    "ShippingInsurance": "tradera:ShippingInsurance",
+    "totalAmount": {
+      "@id": "tradera:totalAmount",
+      "@type": "xsd:decimal"
+    },
+    "totalAmountUpToItemValue": {
+      "@id": "tradera:totalAmountUpToItemValue",
+      "@type": "xsd:decimal"
+    },
+    "amountPerKilogram": {
+      "@id": "tradera:amountPerKilogram",
+      "@type": "xsd:decimal"
+    },
+    "hasReimbursementUpToPackageCost": {
+      "@id": "tradera:hasReimbursementUpToPackageCost",
+      "@type": "xsd:boolean"
+    },
+    "ShippingPackageRequirements": "tradera:ShippingPackageRequirements",
+    "maxWeight": {
+      "@id": "tradera:maxWeight",
+      "@type": "xsd:decimal"
+    },
+    "minWeight": {
+      "@id": "tradera:minWeight",
+      "@type": "xsd:decimal"
+    },
+    "maxSumOfAllSides": {
+      "@id": "tradera:maxSumOfAllSides",
+      "@type": "xsd:decimal"
+    },
+    "maxSumOfLengthAndHeight": {
+      "@id": "tradera:maxSumOfLengthAndHeight",
+      "@type": "xsd:decimal"
+    },
+    "maxLengthPlusCircumference": {
+      "@id": "tradera:maxLengthPlusCircumference",
+      "@type": "xsd:decimal"
+    },
+    "maxLength": {
+      "@id": "tradera:maxLength",
+      "@type": "xsd:decimal"
+    },
+    "maxWidth": {
+      "@id": "tradera:maxWidth",
+      "@type": "xsd:decimal"
+    },
+    "maxHeight": {
+      "@id": "tradera:maxHeight",
+      "@type": "xsd:decimal"
+    },
+    "maxVolume": {
+      "@id": "tradera:maxVolume",
+      "@type": "xsd:decimal"
+    },
+    "minLength": {
+      "@id": "tradera:minLength",
+      "@type": "xsd:decimal"
+    },
+    "minWidth": {
+      "@id": "tradera:minWidth",
+      "@type": "xsd:decimal"
+    },
+    "minHeight": {
+      "@id": "tradera:minHeight",
+      "@type": "xsd:decimal"
+    },
+    "restrictions": {
+      "@id": "tradera:restrictions",
+      "@container": "@list"
+    },
+    "ShippingProduct": "tradera:ShippingProduct",
+    "vatPercent": {
+      "@id": "tradera:vatPercent",
+      "@type": "xsd:integer"
+    },
+    "toCountry": {
+      "@id": "tradera:toCountry",
+      "@type": "xsd:string"
+    },
+    "fromCountry": {
+      "@id": "tradera:fromCountry",
+      "@type": "xsd:string"
+    },
+    "packageRequirements": {
+      "@id": "tradera:packageRequirements",
+      "@type": "@id"
+    },
+    "dimensionsExceededPenalty": {
+      "@id": "tradera:dimensionsExceededPenalty",
+      "@type": "xsd:integer"
+    },
+    "weightExceededPenalty": {
+      "@id": "tradera:weightExceededPenalty",
+      "@type": "xsd:integer"
+    },
+    "displayPenaltyWarning": {
+      "@id": "tradera:displayPenaltyWarning",
+      "@type": "xsd:boolean"
+    },
+    "deliveryInformation": {
+      "@id": "tradera:deliveryInformation",
+      "@type": "@id"
+    },
+    "termsAndConditions": {
+      "@id": "tradera:termsAndConditions",
+      "@type": "@id"
+    },
+    "ShippingTermsAndConditions": "tradera:ShippingTermsAndConditions",
+    "termsAndConditionUrl": {
+      "@id": "tradera:termsAndConditionUrl",
+      "@type": "xsd:string"
+    },
+    "general": {
+      "@id": "tradera:general",
+      "@type": "xsd:string"
+    },
+    "termsOfService": {
+      "@id": "tradera:termsOfService",
+      "@type": "xsd:string"
+    },
+    "termsOfPurchase": {
+      "@id": "tradera:termsOfPurchase",
+      "@type": "xsd:string"
+    },
+    "ShopItemData": "tradera:ShopItemData",
+    "deactivateDate": {
+      "@id": "tradera:deactivateDate",
+      "@type": "xsd:dateTime"
+    },
+    "absoluteQuantity": {
+      "@id": "tradera:absoluteQuantity",
+      "@type": "xsd:integer"
+    },
+    "itemImages": {
+      "@id": "tradera:itemImages",
+      "@container": "@list"
+    },
+    "externalId": {
+      "@id": "tradera:externalId",
+      "@type": "xsd:integer"
+    },
+    "ShopItemUpdateData": "tradera:ShopItemUpdateData",
+    "itemData": {
+      "@id": "tradera:itemData",
+      "@type": "@id"
+    },
+    "ShopItemVariantData": "tradera:ShopItemVariantData",
+    "sellerPartNo": {
+      "@id": "tradera:sellerPartNo",
+      "@type": "xsd:string"
+    },
+    "variantData": {
+      "@id": "tradera:variantData",
+      "@type": "@id"
+    },
+    "ShopItemVariantUpdateData": "tradera:ShopItemVariantUpdateData",
+    "ShopLogoData": "tradera:ShopLogoData",
+    "removeLogo": {
+      "@id": "tradera:removeLogo",
+      "@type": "xsd:boolean"
+    },
+    "ShopSettingsData": "tradera:ShopSettingsData",
+    "companyInformation": {
+      "@id": "tradera:companyInformation",
+      "@type": "xsd:string"
+    },
+    "purchaseTerms": {
+      "@id": "tradera:purchaseTerms",
+      "@type": "xsd:string"
+    },
+    "showGalleryMode": {
+      "@id": "tradera:showGalleryMode",
+      "@type": "xsd:boolean"
+    },
+    "showAuctionView": {
+      "@id": "tradera:showAuctionView",
+      "@type": "xsd:boolean"
+    },
+    "logoInformation": {
+      "@id": "tradera:logoInformation",
+      "@type": "@id"
+    },
+    "bannerColor": {
+      "@id": "tradera:bannerColor",
+      "@type": "xsd:string"
+    },
+    "isTemporaryClosed": {
+      "@id": "tradera:isTemporaryClosed",
+      "@type": "xsd:boolean"
+    },
+    "temporaryClosedMessage": {
+      "@id": "tradera:temporaryClosedMessage",
+      "@type": "xsd:string"
+    },
+    "contactInformation": {
+      "@id": "tradera:contactInformation",
+      "@type": "xsd:string"
+    },
+    "logoImageUrl": {
+      "@id": "tradera:logoImageUrl",
+      "@type": "xsd:string"
+    },
+    "maxActiveItems": {
+      "@id": "tradera:maxActiveItems",
+      "@type": "xsd:integer"
+    },
+    "maxInventoryItems": {
+      "@id": "tradera:maxInventoryItems",
+      "@type": "xsd:integer"
+    },
+    "TermAttributeValue": "tradera:TermAttributeValue",
+    "TermValues": "tradera:TermValues",
+    "Token": "tradera:Token",
+    "authToken": {
+      "@id": "tradera:authToken",
+      "@type": "xsd:string"
+    },
+    "hardExpirationTime": {
+      "@id": "tradera:hardExpirationTime",
+      "@type": "xsd:dateTime"
+    },
+    "Transaction": "tradera:Transaction",
+    "TransactionFilter": "tradera:TransactionFilter",
+    "TransactionItem": "tradera:TransactionItem",
+    "TransactionStatusUpdateData": "tradera:TransactionStatusUpdateData",
+    "transactionId": {
+      "@id": "tradera:transactionId",
+      "@type": "xsd:integer"
+    },
+    "markAsPaidConfirmed": {
+      "@id": "tradera:markAsPaidConfirmed",
+      "@type": "xsd:boolean"
+    },
+    "markedAsShipped": {
+      "@id": "tradera:markedAsShipped",
+      "@type": "xsd:boolean"
+    },
+    "markShippingBooked": {
+      "@id": "tradera:markShippingBooked",
+      "@type": "xsd:boolean"
+    },
+    "UpdateItemPriceError": "tradera:UpdateItemPriceError",
+    "UpdateItemPriceRequest": "tradera:UpdateItemPriceRequest",
+    "UpdateItemPriceResult": "tradera:UpdateItemPriceResult",
+    "UpdatedItemInfo": "tradera:UpdatedItemInfo",
+    "rowVersion": {
+      "@id": "tradera:rowVersion",
+      "@type": "xsd:integer"
+    },
+    "UserInfo": "tradera:UserInfo",
+    "phoneNumber": {
+      "@id": "tradera:phoneNumber",
+      "@type": "xsd:string"
+    },
+    "address": {
+      "@id": "tradera:address",
+      "@type": "xsd:string"
+    },
+    "personalNumber": {
+      "@id": "tradera:personalNumber",
+      "@type": "xsd:string"
+    },
+    "currencyCode": {
+      "@id": "tradera:currencyCode",
+      "@type": "xsd:string"
+    },
+    "languageCodeIso2": {
+      "@id": "tradera:languageCodeIso2",
+      "@type": "xsd:string"
+    },
+    "ValidateCampaignCodeRequest": "tradera:ValidateCampaignCodeRequest",
+    "ValidateCampaignCodeResult": "tradera:ValidateCampaignCodeResult",
+    "isValid": {
+      "@id": "tradera:isValid",
+      "@type": "xsd:boolean"
+    },
+    "isInvalidBecauseDoesNotExist": {
+      "@id": "tradera:isInvalidBecauseDoesNotExist",
+      "@type": "xsd:boolean"
+    },
+    "isInvalidBecauseHasNotStarted": {
+      "@id": "tradera:isInvalidBecauseHasNotStarted",
+      "@type": "xsd:boolean"
+    },
+    "isInvalidBecauseHasEnded": {
+      "@id": "tradera:isInvalidBecauseHasEnded",
+      "@type": "xsd:boolean"
+    },
+    "isInvalidBecauseCategoryIsNotAllowed": {
+      "@id": "tradera:isInvalidBecauseCategoryIsNotAllowed",
+      "@type": "xsd:boolean"
+    },
+    "isInvalidBecauseAlreadyUsed": {
+      "@id": "tradera:isInvalidBecauseAlreadyUsed",
+      "@type": "xsd:boolean"
+    },
+    "isInvalidBecauseUserIsNotAllowed": {
+      "@id": "tradera:isInvalidBecauseUserIsNotAllowed",
+      "@type": "xsd:boolean"
+    },
+    "discountFactor": {
+      "@id": "tradera:discountFactor",
+      "@type": "xsd:decimal"
+    },
+    "provisionFactor": {
+      "@id": "tradera:provisionFactor",
+      "@type": "xsd:decimal"
+    },
+    "maxFeeCap": {
+      "@id": "tradera:maxFeeCap",
+      "@type": "xsd:decimal"
+    },
+    "isCustomLengthFeeFree": {
+      "@id": "tradera:isCustomLengthFeeFree",
+      "@type": "xsd:boolean"
+    },
+    "isUnsoldFeeFree": {
+      "@id": "tradera:isUnsoldFeeFree",
+      "@type": "xsd:boolean"
+    },
+    "VariantAttribute": "tradera:VariantAttribute",
+    "VariantData": "tradera:VariantData",
+    "variantGroupId": {
+      "@id": "tradera:variantGroupId",
+      "@type": "xsd:string"
+    },
+    "variantAttributes": {
+      "@id": "tradera:variantAttributes",
+      "@container": "@list"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "Tradera API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects Tradera's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-15) from openapi/tradera-openapi.json.",
+  "dcterms:created": "2026-10-15",
+  "dcterms:source": [
+    "openapi/tradera-openapi.json"
+  ]
+}

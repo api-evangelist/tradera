@@ -1,0 +1,219 @@
+openapi: 3.2.0
+info:
+  title: Tradera Search API
+  description: REST/JSON version of the Tradera API.
+  version: v4-beta
+security:
+- AppAuth: []
+  AppKeyAuth: []
+  UserAuth: []
+  UserTokenAuth: []
+tags:
+- name: Search
+paths:
+  /v4/search:
+    get:
+      tags:
+      - Search
+      summary: Searches for items with basic parameters
+      parameters:
+      - name: query
+        in: query
+        schema:
+          type: string
+      - name: categoryId
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: pageNumber
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: orderBy
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+      operationId: getV4Search
+      x-operation-id-source: derived
+  /v4/search/advanced:
+    post:
+      tags:
+      - Search
+      summary: Performs an advanced search with multiple filter criteria
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchAdvancedRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SearchAdvancedRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SearchAdvancedRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+      operationId: postV4SearchAdvanced
+      x-operation-id-source: derived
+  /v4/search/category-count:
+    post:
+      tags:
+      - Search
+      summary: Gets category counts for a search query
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCountRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CategoryCountRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CategoryCountRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CategoryCountResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryCountResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CategoryCountResult'
+      operationId: postV4SearchCategoryCount
+      x-operation-id-source: derived
+  /v4/search/by-zip-code:
+    post:
+      tags:
+      - Search
+      summary: Searches for items by zip code
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchByZipCodeRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SearchByZipCodeRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SearchByZipCodeRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+      operationId: postV4SearchByZipCode
+      x-operation-id-source: derived
+  /v4/search/by-fixed-criteria:
+    post:
+      tags:
+      - Search
+      summary: Searches for items by fixed criteria (e.g., ending soon, newly listed)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchByFixedCriteriaRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SearchByFixedCriteriaRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SearchByFixedCriteriaRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+      operationId: postV4SearchByFixedCriteria
+      x-operation-id-source: derived
+components:
+  schemas:
+    SearchByZipCodeRequest:
+      type: object
+      additionalProperties: false
+    SearchAdvancedRequest:
+      type: object
+      additionalProperties: false
+    CategoryCountResult:
+      type: object
+      additionalProperties: false
+    CategoryCountRequest:
+      type: object
+      additionalProperties: false
+    SearchByFixedCriteriaRequest:
+      type: object
+      additionalProperties: false
+    SearchResult:
+      type: object
+      additionalProperties: false
+  securitySchemes:
+    AppAuth:
+      type: apiKey
+      description: Application ID
+      name: X-App-Id
+      in: header
+    AppKeyAuth:
+      type: apiKey
+      description: Application Key
+      name: X-App-Key
+      in: header
+    UserAuth:
+      type: apiKey
+      description: User ID
+      name: X-User-Id
+      in: header
+    UserTokenAuth:
+      type: apiKey
+      description: User Token
+      name: X-User-Token
+      in: header

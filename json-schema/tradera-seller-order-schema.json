@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/tradera/main/json-schema/tradera-seller-order-schema.json",
+  "title": "SellerOrder",
+  "x-generated": "2026-10-15",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/tradera-openapi.json#/components/schemas/SellerOrder",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expiresDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "lastUpdatedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "subTotal": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "seller": {
+      "$ref": "#/$defs/SellerOrderUser"
+    },
+    "buyer": {
+      "$ref": "#/$defs/SellerOrderUser"
+    },
+    "shipTo": {
+      "$ref": "#/$defs/SellerOrderAddress"
+    },
+    "items": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/SellerOrderItem"
+      }
+    },
+    "sellerOrderPayments": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "#/$defs/SellerOrderPayment"
+      }
+    },
+    "shippingType": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shippingCost": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "shippingWeight": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "format": "double"
+    },
+    "purchaseOrderId": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "ApiItemType": {
+      "enum": [
+        1,
+        3,
+        4,
+        5
+      ],
+      "type": "integer",
+      "format": "int32"
+    },
+    "SellerOrderAddress": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addressLine1": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addressLine2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zipCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "SellerOrderItem": {
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "$ref": "#/$defs/ApiItemType"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "unitPrice": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "vatRate": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "ownReferences": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "merchantPartNumber": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "SellerOrderKeyValuePair": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "SellerOrderPayment": {
+      "type": "object",
+      "properties": {
+        "paymentType": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "additionalInfo": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/SellerOrderKeyValuePair"
+          }
+        },
+        "amount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "paidDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "paymentCost": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "additionalProperties": false
+    },
+    "SellerOrderUser": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "firstName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addressLine1": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addressLine2": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "zipCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "city": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "countryName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "alias": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,96 @@
+openapi: 3.2.0
+info:
+  title: Tradera.Api.Services.Core API
+  description: REST/JSON version of the Tradera API.
+  version: v4-beta
+security:
+- AppAuth: []
+  AppKeyAuth: []
+  UserAuth: []
+  UserTokenAuth: []
+tags:
+- name: Tradera.Api.Services.Core
+paths:
+  /healthz:
+    get:
+      tags:
+      - Tradera.Api.Services.Core
+      responses:
+        '200':
+          description: OK
+      summary: Get healthz
+      x-summary-source: derived
+      operationId: getHealthz
+      x-operation-id-source: derived
+  /v3/api/docs/{serviceName}:
+    get:
+      tags:
+      - Tradera.Api.Services.Core
+      parameters:
+      - name: serviceName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Get api docs by service name
+      x-summary-source: derived
+      operationId: getV3ApiDocsByServiceName
+      x-operation-id-source: derived
+  /v3/api/docs/{serviceName}/{operationName}:
+    get:
+      tags:
+      - Tradera.Api.Services.Core
+      parameters:
+      - name: serviceName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: operationName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+      summary: Get api docs by service name by operation name
+      x-summary-source: derived
+      operationId: getV3ApiDocsByServiceNameByOperationName
+      x-operation-id-source: derived
+  /swagger:
+    get:
+      tags:
+      - Tradera.Api.Services.Core
+      responses:
+        '200':
+          description: OK
+      summary: Get swagger
+      x-summary-source: derived
+      operationId: getSwagger
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    AppAuth:
+      type: apiKey
+      description: Application ID
+      name: X-App-Id
+      in: header
+    AppKeyAuth:
+      type: apiKey
+      description: Application Key
+      name: X-App-Key
+      in: header
+    UserAuth:
+      type: apiKey
+      description: User ID
+      name: X-User-Id
+      in: header
+    UserTokenAuth:
+      type: apiKey
+      description: User Token
+      name: X-User-Token
+      in: header

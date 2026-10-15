@@ -1,0 +1,422 @@
+generated: '2026-10-15'
+method: derived
+generator: derive-vocabulary.py
+source: openapi/tradera-openapi.json
+vocabulary:
+  name: Tradera Domain Vocabulary
+  description: 'Terms declared by Tradera''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-15'
+  terms:
+  - term: ActiveFilter
+    definition: 'Enumeration declared by the contract with values: 0, 1, 2.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/ActiveFilter
+  - term: AddItemCampaignCodeRequest
+    definition: Request body for AddItemCampaignCode endpoint.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/AddItemCampaignCodeRequest
+  - term: AddItemImageRequest
+    definition: Request body for AddItemImage endpoint.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/AddItemImageRequest
+  - term: AddItemXmlRequest
+    definition: Request body for AddItemXml endpoint.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/AddItemXmlRequest
+  - term: ApiItemType
+    definition: 'Enumeration declared by the contract with values: 1, 3, 4, 5.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/ApiItemType
+  - term: AttributeDefinition
+    definition: 'Object declared by the contract with fields: id, name, description, maxNumberOfValues, minNumberOfValues, possibleTermValues,
+      key, attributeType, valueFormatting.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/AttributeDefinition
+  - term: AttributeValues
+    definition: 'Object declared by the contract with fields: termAttributeValues, numberAttributeValues.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/AttributeValues
+  - term: BeginBankIdOnFileVerificationResult
+    definition: 'Object declared by the contract with fields: bankIdOrderRef, error, autoStartToken.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/BeginBankIdOnFileVerificationResult
+  - term: BeginBankIdVerificationResult
+    definition: 'Object declared by the contract with fields: bankIdOrderRef, error, qrData, autoStartToken.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/BeginBankIdVerificationResult
+  - term: BinPrice
+    definition: 'Object declared by the contract with fields: price.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/BinPrice
+  - term: BuyRequest
+    definition: Request body for Buy endpoint.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/BuyRequest
+  - term: BuyResult
+    definition: 'Object declared by the contract with fields: nextBid, status.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/BuyResult
+  - term: BuyStatus
+    definition: 'Enumeration declared by the contract with values: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/BuyStatus
+  - term: BuyerTransaction
+    definition: Transaction type matching the BuyerService WSDL schema, which includes Seller and IsMarkedAsPaid fields not present in the RestrictedService
+      schema.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/BuyerTransaction
+  - term: CancelBankIdVerificationRequest
+    definition: Request body for the CancelBankIdVerification endpoint.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/CancelBankIdVerificationRequest
+  - term: DetailedSellerRating
+    definition: 'Object declared by the contract with fields: itemAsDescribedCount, itemAsDescribedAverage, commResponsivenessCount, commResponsivenessAverage,
+      shippingTimeCount, shippingTimeAverage, shippingHandlingChargesCount, shippingHandlingChargesAverage.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/DetailedSellerRating
+  - term: FeedbackRating
+    definition: 'Enumeration declared by the contract with values: 0, 1, 3.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/FeedbackRating
+  - term: FeedbackRole
+    definition: 'Enumeration declared by the contract with values: 0, 1.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/FeedbackRole
+  - term: FeedbackSummaryItem
+    definition: 'Object declared by the contract with fields: totalPositive, totalNegative.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/FeedbackSummaryItem
+  - term: FeedbackType
+    definition: 'Enumeration declared by the contract with values: 0, 1.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/FeedbackType
+  - term: FetchTokenRequest
+    definition: Request body for the FetchToken endpoint.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/FetchTokenRequest
+  - term: FreightLabel
+    definition: 'Object declared by the contract with fields: orderId, freightLabelContent.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/FreightLabel
+  - term: GetBankIdVerificationProgressResult
+    definition: 'Object declared by the contract with fields: isCompleted, progress, error, qrData.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/GetBankIdVerificationProgressResult
+  - term: GetFeedback
+    definition: 'Object declared by the contract with fields: feedbackRole, feedbackRating, alias, comment, created, totalRating.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/GetFeedback
+  - term: GetFeedbackRole
+    definition: 'Enumeration declared by the contract with values: 0, 1, 2.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/GetFeedbackRole
+  - term: GetFeedbackSummaryResponse
+    definition: 'Object declared by the contract with fields: userId, lastMonth, lastSixMonth, lastTwelveMonth.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/GetFeedbackSummaryResponse
+  - term: GetMemberPaymentOptionsResult
+    definition: 'Object declared by the contract with fields: paymentOptions.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/GetMemberPaymentOptionsResult
+  - term: GetShippingOptionsResponse
+    definition: 'Object declared by the contract with fields: productsPerWeightSpan.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/GetShippingOptionsResponse
+  - term: ImageFormat
+    definition: Specifies different image formats.
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/ImageFormat
+  - term: ImageLink
+    definition: 'Object declared by the contract with fields: url, format.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ImageLink
+  - term: Item
+    definition: Property order must match the old ASP.NET service's serialization order exactly. The old XmlSerializer serializes public fields
+      before properties, so the former fields (ShippingOptions through DetailedImageLinks) must come first.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/Item
+  - term: ItemAddedDescription
+    definition: 'Object declared by the contract with fields: description, createdDate.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ItemAddedDescription
+  - term: ItemAttributeValues
+    definition: 'Object declared by the contract with fields: terms, numbers.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ItemAttributeValues
+  - term: ItemFieldsResponse
+    definition: 'Object declared by the contract with fields: vat, itemAttributes, paymentTypes, shippingTypes.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ItemFieldsResponse
+  - term: ItemImageData
+    definition: Holds information for an item image.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ItemImageData
+  - term: ItemQuickInfo
+    definition: 'Object declared by the contract with fields: creationDate, itemType, id.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ItemQuickInfo
+  - term: ItemRequest
+    definition: 'Object declared by the contract with fields: title, ownReferences, categoryId, duration, restarts, startPrice, reservePrice,
+      buyItNowPrice, description, paymentOptionIds, shippingOptions, acceptedBidderId. (12 more)'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ItemRequest
+  - term: ItemRestarts
+    definition: 'Object declared by the contract with fields: lastRestartedItemId, ancestorItemId, restartedItems.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ItemRestarts
+  - term: ItemShipping
+    definition: 'Object declared by the contract with fields: shippingOptionId, cost, shippingWeight, shippingWeightSpecified, shippingProductId,
+      shippingProductIdSpecified, shippingProviderId, sellerSurcharge, sellerSurchargeSpecified, sellerDiscount, sellerDiscountSpecified.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ItemShipping
+  - term: ItemTypeFilter
+    definition: 'Enumeration declared by the contract with values: 0, 1, 2, 3.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/ItemTypeFilter
+  - term: LeaveFeedbackRequest
+    definition: Request body for LeaveFeedback endpoints.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/LeaveFeedbackRequest
+  - term: MemberPaymentOption
+    definition: 'Object declared by the contract with fields: name, description, displayName.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/MemberPaymentOption
+  - term: NumberAttributeValue
+    definition: 'Object declared by the contract with fields: id, name, values.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/NumberAttributeValue
+  - term: NumberValues
+    definition: 'Object declared by the contract with fields: id, values.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/NumberValues
+  - term: ProductsPerWeightSpan
+    definition: 'Object declared by the contract with fields: weight, products.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ProductsPerWeightSpan
+  - term: QueuedRequestResponse
+    definition: 'Object declared by the contract with fields: requestId, itemId.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/QueuedRequestResponse
+  - term: RequestResult
+    definition: 'Object declared by the contract with fields: requestId, resultCode, message.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/RequestResult
+  - term: ReservedPrice
+    definition: 'Object declared by the contract with fields: price.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ReservedPrice
+  - term: RestartItemResult
+    definition: Outcome of a restart request for an ended item.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/RestartItemResult
+  - term: RestartedItem
+    definition: 'Object declared by the contract with fields: restartedItemId, restartedAsItemId, restartedDate.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/RestartedItem
+  - term: ResultCode
+    definition: 'Enumeration declared by the contract with values: 1, 2, 4, 8, 16, 32, 64, 128, 256.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/ResultCode
+  - term: SellerInfo
+    definition: 'Object declared by the contract with fields: detailedSellerRating, totalRating, positiveFeedbackPercent, personalMessage, isCompany,
+      hasShop.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SellerInfo
+  - term: SellerOrder
+    definition: 'Object declared by the contract with fields: orderId, createdDate, expiresDate, lastUpdatedDate, subTotal, seller, buyer, shipTo,
+      items, sellerOrderPayments, shippingType, shippingCost. (2 more)'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SellerOrder
+  - term: SellerOrderAddress
+    definition: 'Object declared by the contract with fields: name, addressLine1, addressLine2, zipCode, city, countryName.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SellerOrderAddress
+  - term: SellerOrderItem
+    definition: 'Object declared by the contract with fields: itemId, type, title, quantity, unitPrice, vatRate, ownReferences, merchantPartNumber.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SellerOrderItem
+  - term: SellerOrderKeyValuePair
+    definition: 'Object declared by the contract with fields: key, value.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SellerOrderKeyValuePair
+  - term: SellerOrderPayment
+    definition: 'Object declared by the contract with fields: paymentType, reference, additionalInfo, amount, paidDate, paymentCost.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SellerOrderPayment
+  - term: SellerOrderQueryDateMode
+    definition: 'Enumeration declared by the contract with values: 0, 1.'
+    tags:
+    - Enumeration
+    source: openapi/tradera-openapi.json#/components/schemas/SellerOrderQueryDateMode
+  - term: SellerOrderUser
+    definition: 'Object declared by the contract with fields: userId, firstName, lastName, addressLine1, addressLine2, zipCode, city, countryName,
+      email, phone, alias.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SellerOrderUser
+  - term: SetActivateDateOnShopItemsError
+    definition: 'Object declared by the contract with fields: item, errorMessage.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetActivateDateOnShopItemsError
+  - term: SetActivateDateOnShopItemsRequest
+    definition: 'Object declared by the contract with fields: shopItems.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetActivateDateOnShopItemsRequest
+  - term: SetActivateDateOnShopItemsResult
+    definition: 'Object declared by the contract with fields: queuedRequestResponses, validationErrors.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetActivateDateOnShopItemsResult
+  - term: SetActivateDateShopItem
+    definition: 'Object declared by the contract with fields: id, activateDate.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetActivateDateShopItem
+  - term: SetPriceOnShopItemsError
+    definition: 'Object declared by the contract with fields: item, errorMessage.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetPriceOnShopItemsError
+  - term: SetPriceOnShopItemsRequest
+    definition: 'Object declared by the contract with fields: shopItems.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetPriceOnShopItemsRequest
+  - term: SetPriceOnShopItemsResult
+    definition: 'Object declared by the contract with fields: queuedRequestResponses, validationErrors.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetPriceOnShopItemsResult
+  - term: SetPriceShopItem
+    definition: 'Object declared by the contract with fields: id, price.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetPriceShopItem
+  - term: SetPricesNonShopItem
+    definition: 'Object declared by the contract with fields: id, openingPrice, reservedPrice, binPrice.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetPricesNonShopItem
+  - term: SetPricesOnNonShopItemsError
+    definition: 'Object declared by the contract with fields: item, errorMessage.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetPricesOnNonShopItemsError
+  - term: SetPricesOnNonShopItemsResult
+    definition: 'Object declared by the contract with fields: isSuccessful, validationErrors.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetPricesOnNonShopItemsResult
+  - term: SetQuantityOnShopItemError
+    definition: 'Object declared by the contract with fields: item, errorMessage.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetQuantityOnShopItemError
+  - term: SetQuantityOnShopItemsRequest
+    definition: 'Object declared by the contract with fields: shopItems.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetQuantityOnShopItemsRequest
+  - term: SetQuantityOnShopItemsResult
+    definition: 'Object declared by the contract with fields: successfulUpdates, validationErrors.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetQuantityOnShopItemsResult
+  - term: SetQuantityShopItem
+    definition: 'Object declared by the contract with fields: id, quantity.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetQuantityShopItem
+  - term: SetSellerOrderAsShippedResponse
+    definition: Response for SetSellerOrderAsShipped.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/SetSellerOrderAsShippedResponse
+  - term: ShippingCode
+    definition: How to hand a booked shipment over to the carrier, for shipping options that have no printable freight label (for example Instabox)
+      or that are handed over by scanning a QR code.
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ShippingCode
+  - term: ShippingDeliveryInformation
+    definition: 'Object declared by the contract with fields: mailBoxWithServicePointBackup, servicePoint, canChangeServicePoint, isTraceable,
+      isParcelBoxDeliveryPossible, estimatedDeliveryTime, insurance.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ShippingDeliveryInformation
+  - term: ShippingEstimatedDeliveryTime
+    definition: 'Object declared by the contract with fields: minWeekdays, maxWeekdays.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ShippingEstimatedDeliveryTime
+  - term: ShippingInsurance
+    definition: 'Object declared by the contract with fields: totalAmount, totalAmountUpToItemValue, amountPerKilogram, hasReimbursementUpToPackageCost.'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ShippingInsurance
+  - term: ShippingPackageRequirements
+    definition: 'Object declared by the contract with fields: maxWeight, minWeight, maxSumOfAllSides, maxSumOfLengthAndHeight, maxLengthPlusCircumference,
+      maxLength, maxWidth, maxHeight, maxVolume, minLength, minWidth, minHeight. (1 more)'
+    tags:
+    - Object
+    source: openapi/tradera-openapi.json#/components/schemas/ShippingPackageRequirements

@@ -1,0 +1,472 @@
+openapi: 3.2.0
+info:
+  title: Tradera Orders API
+  description: REST/JSON version of the Tradera API.
+  version: v4-beta
+security:
+- AppAuth: []
+  AppKeyAuth: []
+  UserAuth: []
+  UserTokenAuth: []
+tags:
+- name: Orders
+paths:
+  /v4/orders:
+    get:
+      tags:
+      - Orders
+      summary: Gets seller orders within a date range
+      parameters:
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: queryDateMode
+        in: query
+        schema:
+          $ref: '#/components/schemas/SellerOrderQueryDateMode'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SellerOrder'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SellerOrder'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SellerOrder'
+      operationId: getV4Orders
+      x-operation-id-source: derived
+  /v4/orders/{orderIds}:
+    get:
+      tags:
+      - Orders
+      summary: Gets orders by their IDs
+      parameters:
+      - name: orderIds
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SellerOrder'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SellerOrder'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SellerOrder'
+      operationId: getV4OrdersByOrderIds
+      x-operation-id-source: derived
+  /v4/orders/{orderId}/ship:
+    post:
+      tags:
+      - Orders
+      summary: Marks an order as shipped
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SetSellerOrderAsShippedResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetSellerOrderAsShippedResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SetSellerOrderAsShippedResponse'
+      operationId: postV4OrdersByOrderIdShip
+      x-operation-id-source: derived
+  /v4/orders/{orderIds}/freight-labels:
+    get:
+      tags:
+      - Orders
+      summary: Gets freight labels for the specified orders
+      parameters:
+      - name: orderIds
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FreightLabel'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FreightLabel'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FreightLabel'
+      operationId: getV4OrdersByOrderIdsFreightLabels
+      x-operation-id-source: derived
+  /v4/orders/{orderIds}/shipping-codes:
+    get:
+      tags:
+      - Orders
+      summary: Gets the shipping codes for the specified orders — the code to write on the…
+      parameters:
+      - name: orderIds
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShippingCode'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShippingCode'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShippingCode'
+      operationId: getV4OrdersByOrderIdsShippingCodes
+      x-operation-id-source: derived
+components:
+  schemas:
+    SellerOrderKeyValuePair:
+      type: object
+      properties:
+        key:
+          type:
+          - string
+          - 'null'
+        value:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ShippingCode:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: The order the shipment belongs to.
+          format: int32
+        shippingProvider:
+          type:
+          - string
+          - 'null'
+          description: The shipping provider that carries the shipment, for example Instabox or SchenkerPrivpak.
+        labellessShippingCode:
+          type:
+          - string
+          - 'null'
+          description: 'The code to write on the parcel for a labelless shipment. Empty until the carrier has
+
+            confirmed the booking, and for shipping options that use a printed freight label instead.'
+        qrCodeImageUrl:
+          type:
+          - string
+          - 'null'
+          description: URL to a QR code to show at drop-off. Empty for shipping options that do not use one.
+        shipmentNo:
+          type:
+          - string
+          - 'null'
+          description: The carrier's shipment number.
+        hasFreightLabel:
+          type: boolean
+          description: 'Whether a printable freight label is available for the shipment through the freight-labels
+
+            endpoint.'
+      additionalProperties: false
+      description: 'How to hand a booked shipment over to the carrier, for shipping options that have no printable
+
+        freight label (for example Instabox) or that are handed over by scanning a QR code.'
+    SellerOrderAddress:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        addressLine1:
+          type:
+          - string
+          - 'null'
+        addressLine2:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        countryName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SellerOrderItem:
+      type: object
+      properties:
+        itemId:
+          type: integer
+          format: int32
+        type:
+          $ref: '#/components/schemas/ApiItemType'
+        title:
+          type:
+          - string
+          - 'null'
+        quantity:
+          type: integer
+          format: int32
+        unitPrice:
+          type: integer
+          format: int32
+        vatRate:
+          type: integer
+          format: int32
+        ownReferences:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        merchantPartNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    FreightLabel:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int32
+        freightLabelContent:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SellerOrder:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int32
+        createdDate:
+          type: string
+          format: date-time
+        expiresDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        subTotal:
+          type: integer
+          format: int32
+        seller:
+          $ref: '#/components/schemas/SellerOrderUser'
+        buyer:
+          $ref: '#/components/schemas/SellerOrderUser'
+        shipTo:
+          $ref: '#/components/schemas/SellerOrderAddress'
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SellerOrderItem'
+        sellerOrderPayments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SellerOrderPayment'
+        shippingType:
+          type:
+          - string
+          - 'null'
+        shippingCost:
+          type: integer
+          format: int32
+        shippingWeight:
+          type:
+          - number
+          - 'null'
+          format: double
+        purchaseOrderId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    SetSellerOrderAsShippedResponse:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: The order ID that was marked as shipped.
+          format: int32
+      additionalProperties: false
+      description: Response for SetSellerOrderAsShipped.
+    ApiItemType:
+      enum:
+      - 1
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    SellerOrderQueryDateMode:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    SellerOrderPayment:
+      type: object
+      properties:
+        paymentType:
+          type:
+          - string
+          - 'null'
+        reference:
+          type:
+          - string
+          - 'null'
+        additionalInfo:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SellerOrderKeyValuePair'
+        amount:
+          type: integer
+          format: int32
+        paidDate:
+          type: string
+          format: date-time
+        paymentCost:
+          type: integer
+          format: int32
+      additionalProperties: false
+    SellerOrderUser:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        addressLine1:
+          type:
+          - string
+          - 'null'
+        addressLine2:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        countryName:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        alias:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+  securitySchemes:
+    AppAuth:
+      type: apiKey
+      description: Application ID
+      name: X-App-Id
+      in: header
+    AppKeyAuth:
+      type: apiKey
+      description: Application Key
+      name: X-App-Key
+      in: header
+    UserAuth:
+      type: apiKey
+      description: User ID
+      name: X-User-Id
+      in: header
+    UserTokenAuth:
+      type: apiKey
+      description: User Token
+      name: X-User-Token
+      in: header

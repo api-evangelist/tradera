@@ -1,0 +1,37 @@
+generated: '2026-10-15'
+method: derived
+source: openapi/tradera-openapi.json
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: AppAuth
+  type: apiKey
+  in: header
+  parameter: X-App-Id
+  description: Application ID
+  sources:
+  - openapi/tradera-openapi.json
+- name: AppKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-App-Key
+  description: Application Key
+  sources:
+  - openapi/tradera-openapi.json
+- name: UserAuth
+  type: apiKey
+  in: header
+  parameter: X-User-Id
+  description: User ID
+  sources:
+  - openapi/tradera-openapi.json
+- name: UserTokenAuth
+  type: apiKey
+  in: header
+  parameter: X-User-Token
+  description: User Token
+  sources:
+  - openapi/tradera-openapi.json

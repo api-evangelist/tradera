@@ -1,0 +1,57 @@
+openapi: 3.2.0
+info:
+  title: Tradera Program API
+  description: REST/JSON version of the Tradera API.
+  version: v4-beta
+security:
+- AppAuth: []
+  AppKeyAuth: []
+  UserAuth: []
+  UserTokenAuth: []
+tags:
+- name: Program
+paths:
+  /swagger.json:
+    get:
+      tags:
+      - Program
+      responses:
+        '200':
+          description: OK
+      summary: Get swagger json
+      x-summary-source: derived
+      operationId: getSwaggerJson
+      x-operation-id-source: derived
+  /openapi.json:
+    get:
+      tags:
+      - Program
+      responses:
+        '200':
+          description: OK
+      summary: Get openapi json
+      x-summary-source: derived
+      operationId: getOpenapiJson
+      x-operation-id-source: derived
+components:
+  securitySchemes:
+    AppAuth:
+      type: apiKey
+      description: Application ID
+      name: X-App-Id
+      in: header
+    AppKeyAuth:
+      type: apiKey
+      description: Application Key
+      name: X-App-Key
+      in: header
+    UserAuth:
+      type: apiKey
+      description: User ID
+      name: X-User-Id
+      in: header
+    UserTokenAuth:
+      type: apiKey
+      description: User Token
+      name: X-User-Token
+      in: header
