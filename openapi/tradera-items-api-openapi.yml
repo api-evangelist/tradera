@@ -293,33 +293,6 @@ components:
         sellerDiscountSpecified:
           type: boolean
       additionalProperties: false
-    ItemQuickInfo:
-      type: object
-      properties:
-        creationDate:
-          type: string
-          format: date-time
-        itemType:
-          $ref: '#/components/schemas/ApiItemType'
-        id:
-          type: integer
-          format: int32
-      additionalProperties: false
-    ActiveFilter:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    ApiItemType:
-      enum:
-      - 1
-      - 3
-      - 4
-      - 5
-      type: integer
-      format: int32
     Item:
       type: object
       properties:
@@ -493,18 +466,52 @@ components:
         The old XmlSerializer serializes public fields before properties, so the former
 
         fields (ShippingOptions through DetailedImageLinks) must come first.'
-    RestartedItem:
+    ItemTypeFilter:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    ItemStatus:
+      type: object
+      additionalProperties: false
+    ItemQuickInfo:
       type: object
       properties:
-        restartedItemId:
-          type: integer
-          format: int32
-        restartedAsItemId:
-          type: integer
-          format: int32
-        restartedDate:
+        creationDate:
           type: string
           format: date-time
+        itemType:
+          $ref: '#/components/schemas/ApiItemType'
+        id:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ApiItemType:
+      enum:
+      - 1
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    AttributeValues:
+      type: object
+      properties:
+        termAttributeValues:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TermAttributeValue'
+        numberAttributeValues:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/NumberAttributeValue'
       additionalProperties: false
     ImageLink:
       type: object
@@ -518,23 +525,53 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    TermAttributeValue:
+    ItemRestarts:
       type: object
       properties:
-        id:
+        lastRestartedItemId:
           type: integer
           format: int32
-        name:
-          type:
-          - string
-          - 'null'
-        values:
+        ancestorItemId:
+          type: integer
+          format: int32
+        restartedItems:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/RestartedItem'
       additionalProperties: false
+    RestartedItem:
+      type: object
+      properties:
+        restartedItemId:
+          type: integer
+          format: int32
+        restartedAsItemId:
+          type: integer
+          format: int32
+        restartedDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ItemAddedDescription:
+      type: object
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        createdDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ActiveFilter:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     NumberAttributeValue:
       type: object
       properties:
@@ -553,62 +590,25 @@ components:
             type: number
             format: double
       additionalProperties: false
-    AttributeValues:
+    TermAttributeValue:
       type: object
       properties:
-        termAttributeValues:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/TermAttributeValue'
-        numberAttributeValues:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/NumberAttributeValue'
-      additionalProperties: false
-    ItemTypeFilter:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    User:
-      type: object
-      additionalProperties: false
-    ItemStatus:
-      type: object
-      additionalProperties: false
-    ItemAddedDescription:
-      type: object
-      properties:
-        description:
+        id:
+          type: integer
+          format: int32
+        name:
           type:
           - string
           - 'null'
-        createdDate:
-          type: string
-          format: date-time
-      additionalProperties: false
-    ItemRestarts:
-      type: object
-      properties:
-        lastRestartedItemId:
-          type: integer
-          format: int32
-        ancestorItemId:
-          type: integer
-          format: int32
-        restartedItems:
+        values:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/RestartedItem'
+            type: string
+      additionalProperties: false
+    User:
+      type: object
       additionalProperties: false
   securitySchemes:
     AppAuth:

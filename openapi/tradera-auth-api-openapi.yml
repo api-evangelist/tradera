@@ -130,6 +130,20 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    FetchTokenRequest:
+      type: object
+      properties:
+        userId:
+          type: integer
+          description: The user ID to fetch a token for.
+          format: int32
+        secretKey:
+          type:
+          - string
+          - 'null'
+          description: The secret key for token generation.
+      additionalProperties: false
+      description: Request body for the FetchToken endpoint.
     BeginBankIdOnFileVerificationResult:
       type: object
       properties:
@@ -142,6 +156,24 @@ components:
           - string
           - 'null'
         autoStartToken:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GetBankIdVerificationProgressResult:
+      type: object
+      properties:
+        isCompleted:
+          type: boolean
+        progress:
+          type:
+          - string
+          - 'null'
+        error:
+          type:
+          - string
+          - 'null'
+        qrData:
           type:
           - string
           - 'null'
@@ -166,16 +198,6 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    CancelBankIdVerificationRequest:
-      type: object
-      properties:
-        bankIdOrderRef:
-          type:
-          - string
-          - 'null'
-          description: The BankID order reference to cancel.
-      additionalProperties: false
-      description: Request body for the CancelBankIdVerification endpoint.
     Token:
       type: object
       properties:
@@ -187,38 +209,16 @@ components:
           type: string
           format: date-time
       additionalProperties: false
-    FetchTokenRequest:
+    CancelBankIdVerificationRequest:
       type: object
       properties:
-        userId:
-          type: integer
-          description: The user ID to fetch a token for.
-          format: int32
-        secretKey:
+        bankIdOrderRef:
           type:
           - string
           - 'null'
-          description: The secret key for token generation.
+          description: The BankID order reference to cancel.
       additionalProperties: false
-      description: Request body for the FetchToken endpoint.
-    GetBankIdVerificationProgressResult:
-      type: object
-      properties:
-        isCompleted:
-          type: boolean
-        progress:
-          type:
-          - string
-          - 'null'
-        error:
-          type:
-          - string
-          - 'null'
-        qrData:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
+      description: Request body for the CancelBankIdVerification endpoint.
   securitySchemes:
     AppAuth:
       type: apiKey

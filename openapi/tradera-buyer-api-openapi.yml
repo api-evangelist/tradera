@@ -124,106 +124,25 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ItemShipping:
+    TransactionItem:
       type: object
       properties:
-        shippingOptionId:
-          type:
-          - integer
-          - 'null'
-          description: 'OBSOLETE: Use Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProviderId instead. Takes the same numeric ids.'
-          format: int32
-        cost:
+        id:
           type: integer
           format: int32
-        shippingWeight:
+        type:
+          $ref: '#/components/schemas/ApiItemType'
+        title:
           type:
-          - number
+          - string
           - 'null'
-          format: double
-        shippingWeightSpecified:
-          type: boolean
-        shippingProductId:
+        ownReferences:
           type:
-          - integer
+          - array
           - 'null'
-          format: int32
-        shippingProductIdSpecified:
-          type: boolean
-        shippingProviderId:
-          type:
-          - integer
-          - 'null'
-          description: "The numeric id of the shipping provider. Call GetShippingOptions (SOAP) or\nGET /v4/reference-data/shipping-options (REST) for the providers a seller can use — every\nproduct returned carries the ShippingProviderId to send back. The set changes over time,\nso read it from the API rather than hard-coding it.\n            \nDEPRECATED providers, rejected when listing an item: Posten (1), Bussgods (3), UPS (4),\nFedEx (5), NotSpecified (10) and PostNordStampDenmark (15). Sellers who used Posten should\nuse PostNordParcel (12) or Alternative (6) instead."
-          format: int32
-        sellerSurcharge:
-          type:
-          - integer
-          - 'null'
-          description: 'Optional seller-defined surcharge added on top of the shipping product''s base cost.
-
-            Not yet used to compute the buyer-facing shipping price — Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost is still
-
-            the authoritative, required field today and must be sent. In a future API revision,
-
-            Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost will be removed and the buyer-facing price will be derived from
-
-            the shipping product (identified by Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProductId) adjusted by
-
-            Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerSurcharge and Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerDiscount.'
-          format: int32
-        sellerSurchargeSpecified:
-          type: boolean
-        sellerDiscount:
-          type:
-          - integer
-          - 'null'
-          description: 'Optional seller-defined discount subtracted from the shipping product''s base cost.
-
-            Not yet used to compute the buyer-facing shipping price — Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost is still
-
-            the authoritative, required field today and must be sent. In a future API revision,
-
-            Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost will be removed and the buyer-facing price will be derived from
-
-            the shipping product (identified by Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProductId) adjusted by
-
-            Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerSurcharge and Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerDiscount.'
-          format: int32
-        sellerDiscountSpecified:
-          type: boolean
+          items:
+            type: string
       additionalProperties: false
-    ActiveFilter:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    BuyStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      type: integer
-      format: int32
-    ApiItemType:
-      enum:
-      - 1
-      - 3
-      - 4
-      - 5
-      type: integer
-      format: int32
     Item:
       type: object
       properties:
@@ -397,6 +316,33 @@ components:
         The old XmlSerializer serializes public fields before properties, so the former
 
         fields (ShippingOptions through DetailedImageLinks) must come first.'
+    ItemStatus:
+      type: object
+      additionalProperties: false
+    BuyStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      type: integer
+      format: int32
+    ApiItemType:
+      enum:
+      - 1
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
     BuyerTransaction:
       type: object
       properties:
@@ -446,42 +392,120 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    TransactionItem:
+    BuyRequest:
       type: object
       properties:
-        id:
+        itemId:
           type: integer
+          description: The item ID to buy.
           format: int32
-        type:
-          $ref: '#/components/schemas/ApiItemType'
-        title:
-          type:
-          - string
-          - 'null'
-        ownReferences:
+        buyAmount:
+          type: integer
+          description: The amount to buy for.
+          format: int32
+      additionalProperties: false
+      description: Request body for Buy endpoint.
+    AttributeValues:
+      type: object
+      properties:
+        termAttributeValues:
           type:
           - array
           - 'null'
           items:
-            type: string
-      additionalProperties: false
-    TermAttributeValue:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int32
-        name:
-          type:
-          - string
-          - 'null'
-        values:
+            $ref: '#/components/schemas/TermAttributeValue'
+        numberAttributeValues:
           type:
           - array
           - 'null'
           items:
-            type: string
+            $ref: '#/components/schemas/NumberAttributeValue'
       additionalProperties: false
+    BuyResult:
+      type: object
+      properties:
+        nextBid:
+          type: integer
+          format: int32
+        status:
+          $ref: '#/components/schemas/BuyStatus'
+      additionalProperties: false
+    ItemShipping:
+      type: object
+      properties:
+        shippingOptionId:
+          type:
+          - integer
+          - 'null'
+          description: 'OBSOLETE: Use Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProviderId instead. Takes the same numeric ids.'
+          format: int32
+        cost:
+          type: integer
+          format: int32
+        shippingWeight:
+          type:
+          - number
+          - 'null'
+          format: double
+        shippingWeightSpecified:
+          type: boolean
+        shippingProductId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        shippingProductIdSpecified:
+          type: boolean
+        shippingProviderId:
+          type:
+          - integer
+          - 'null'
+          description: "The numeric id of the shipping provider. Call GetShippingOptions (SOAP) or\nGET /v4/reference-data/shipping-options (REST) for the providers a seller can use — every\nproduct returned carries the ShippingProviderId to send back. The set changes over time,\nso read it from the API rather than hard-coding it.\n            \nDEPRECATED providers, rejected when listing an item: Posten (1), Bussgods (3), UPS (4),\nFedEx (5), NotSpecified (10) and PostNordStampDenmark (15). Sellers who used Posten should\nuse PostNordParcel (12) or Alternative (6) instead."
+          format: int32
+        sellerSurcharge:
+          type:
+          - integer
+          - 'null'
+          description: 'Optional seller-defined surcharge added on top of the shipping product''s base cost.
+
+            Not yet used to compute the buyer-facing shipping price — Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost is still
+
+            the authoritative, required field today and must be sent. In a future API revision,
+
+            Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost will be removed and the buyer-facing price will be derived from
+
+            the shipping product (identified by Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProductId) adjusted by
+
+            Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerSurcharge and Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerDiscount.'
+          format: int32
+        sellerSurchargeSpecified:
+          type: boolean
+        sellerDiscount:
+          type:
+          - integer
+          - 'null'
+          description: 'Optional seller-defined discount subtracted from the shipping product''s base cost.
+
+            Not yet used to compute the buyer-facing shipping price — Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost is still
+
+            the authoritative, required field today and must be sent. In a future API revision,
+
+            Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.Cost will be removed and the buyer-facing price will be derived from
+
+            the shipping product (identified by Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.ShippingProductId) adjusted by
+
+            Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerSurcharge and Tradera.Api.Services.Core.Contracts.Entities.ItemShipping.SellerDiscount.'
+          format: int32
+        sellerDiscountSpecified:
+          type: boolean
+      additionalProperties: false
+    ActiveFilter:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     NumberAttributeValue:
       type: object
       properties:
@@ -500,50 +524,26 @@ components:
             type: number
             format: double
       additionalProperties: false
-    AttributeValues:
+    TermAttributeValue:
       type: object
       properties:
-        termAttributeValues:
+        id:
+          type: integer
+          format: int32
+        name:
+          type:
+          - string
+          - 'null'
+        values:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/TermAttributeValue'
-        numberAttributeValues:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/NumberAttributeValue'
+            type: string
       additionalProperties: false
     User:
       type: object
       additionalProperties: false
-    ItemStatus:
-      type: object
-      additionalProperties: false
-    BuyResult:
-      type: object
-      properties:
-        nextBid:
-          type: integer
-          format: int32
-        status:
-          $ref: '#/components/schemas/BuyStatus'
-      additionalProperties: false
-    BuyRequest:
-      type: object
-      properties:
-        itemId:
-          type: integer
-          description: The item ID to buy.
-          format: int32
-        buyAmount:
-          type: integer
-          description: The amount to buy for.
-          format: int32
-      additionalProperties: false
-      description: Request body for Buy endpoint.
   securitySchemes:
     AppAuth:
       type: apiKey

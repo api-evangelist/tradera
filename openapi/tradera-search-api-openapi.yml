@@ -178,22 +178,22 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    SearchByZipCodeRequest:
-      type: object
-      additionalProperties: false
-    SearchAdvancedRequest:
-      type: object
-      additionalProperties: false
     CategoryCountResult:
       type: object
       additionalProperties: false
-    CategoryCountRequest:
+    SearchByZipCodeRequest:
       type: object
       additionalProperties: false
     SearchByFixedCriteriaRequest:
       type: object
       additionalProperties: false
     SearchResult:
+      type: object
+      additionalProperties: false
+    CategoryCountRequest:
+      type: object
+      additionalProperties: false
+    SearchAdvancedRequest:
       type: object
       additionalProperties: false
   securitySchemes:

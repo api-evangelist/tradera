@@ -1,7 +1,7 @@
 {
   "provider": "tradera",
   "sources": [
-    "tradera-openapi.json"
+    "_original/tradera-openapi.json"
   ],
   "outputs": [
     "tradera-auth-api-openapi.yml",
@@ -16,12 +16,11 @@
     "tradera-tradera-api-services-core-api-openapi.yml",
     "tradera-users-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/tradera-openapi.json"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "tradera-openapi.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "tradera-openapi.json: declared missing tag: Auth",
     "tradera-openapi.json: declared missing tag: Buyer",
@@ -34,7 +33,19 @@
     "tradera-openapi.json: declared missing tag: Search",
     "tradera-openapi.json: declared missing tag: Tradera.Api.Services.Core",
     "tradera-openapi.json: declared missing tag: Users",
-    "apis.yml register: written (+11 apis, 11 total)"
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "tradera-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-buyer-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-items-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-listings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-program-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-reference-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-tradera-api-services-core-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tradera-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

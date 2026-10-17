@@ -175,15 +175,95 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    GetMemberPaymentOptionsResult:
+    MemberPaymentOption:
       type: object
       properties:
-        paymentOptions:
+        name:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/MemberPaymentOption'
+        description:
+          type:
+          - string
+          - 'null'
+        displayName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GetFeedbackSummaryResponse:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+        lastMonth:
+          $ref: '#/components/schemas/FeedbackSummaryItem'
+        lastSixMonth:
+          $ref: '#/components/schemas/FeedbackSummaryItem'
+        lastTwelveMonth:
+          $ref: '#/components/schemas/FeedbackSummaryItem'
+      additionalProperties: false
+    GetFeedbackRole:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    DetailedSellerRating:
+      type: object
+      properties:
+        itemAsDescribedCount:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        itemAsDescribedAverage:
+          type:
+          - number
+          - 'null'
+          format: double
+        commResponsivenessCount:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        commResponsivenessAverage:
+          type:
+          - number
+          - 'null'
+          format: double
+        shippingTimeCount:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        shippingTimeAverage:
+          type:
+          - number
+          - 'null'
+          format: double
+        shippingHandlingChargesCount:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        shippingHandlingChargesAverage:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
+    FeedbackSummaryItem:
+      type: object
+      properties:
+        totalPositive:
+          type: integer
+          format: int32
+        totalNegative:
+          type: integer
+          format: int32
       additionalProperties: false
     SellerInfo:
       type: object
@@ -207,65 +287,6 @@ components:
         hasShop:
           type: boolean
       additionalProperties: false
-    FeedbackSummaryItem:
-      type: object
-      properties:
-        totalPositive:
-          type: integer
-          format: int32
-        totalNegative:
-          type: integer
-          format: int32
-      additionalProperties: false
-    GetFeedbackSummaryResponse:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int32
-        lastMonth:
-          $ref: '#/components/schemas/FeedbackSummaryItem'
-        lastSixMonth:
-          $ref: '#/components/schemas/FeedbackSummaryItem'
-        lastTwelveMonth:
-          $ref: '#/components/schemas/FeedbackSummaryItem'
-      additionalProperties: false
-    FeedbackRole:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    MemberPaymentOption:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        displayName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    GetFeedbackRole:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    FeedbackRating:
-      enum:
-      - 0
-      - 1
-      - 3
-      type: integer
-      format: int32
     UserInfo:
       type: object
       properties:
@@ -321,53 +342,19 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    User:
-      type: object
-      additionalProperties: false
-    DetailedSellerRating:
-      type: object
-      properties:
-        itemAsDescribedCount:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        itemAsDescribedAverage:
-          type:
-          - number
-          - 'null'
-          format: double
-        commResponsivenessCount:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        commResponsivenessAverage:
-          type:
-          - number
-          - 'null'
-          format: double
-        shippingTimeCount:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        shippingTimeAverage:
-          type:
-          - number
-          - 'null'
-          format: double
-        shippingHandlingChargesCount:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        shippingHandlingChargesAverage:
-          type:
-          - number
-          - 'null'
-          format: double
-      additionalProperties: false
+    FeedbackRating:
+      enum:
+      - 0
+      - 1
+      - 3
+      type: integer
+      format: int32
+    FeedbackRole:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
     GetFeedback:
       type: object
       properties:
@@ -389,6 +376,19 @@ components:
         totalRating:
           type: integer
           format: int32
+      additionalProperties: false
+    GetMemberPaymentOptionsResult:
+      type: object
+      properties:
+        paymentOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MemberPaymentOption'
+      additionalProperties: false
+    User:
+      type: object
       additionalProperties: false
   securitySchemes:
     AppAuth:

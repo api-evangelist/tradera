@@ -194,8 +194,64 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    IdDescriptionPair:
+    ShippingTermsAndConditions:
       type: object
+      properties:
+        termsAndConditionUrl:
+          type:
+          - string
+          - 'null'
+        general:
+          type:
+          - string
+          - 'null'
+        termsOfService:
+          type:
+          - string
+          - 'null'
+        termsOfPurchase:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ShippingDeliveryInformation:
+      type: object
+      properties:
+        mailBoxWithServicePointBackup:
+          type: boolean
+        servicePoint:
+          type: boolean
+        canChangeServicePoint:
+          type: boolean
+        isTraceable:
+          type: boolean
+        isParcelBoxDeliveryPossible:
+          type: boolean
+        estimatedDeliveryTime:
+          $ref: '#/components/schemas/ShippingEstimatedDeliveryTime'
+        insurance:
+          $ref: '#/components/schemas/ShippingInsurance'
+      additionalProperties: false
+    ShippingInsurance:
+      type: object
+      properties:
+        totalAmount:
+          type:
+          - number
+          - 'null'
+          format: double
+        totalAmountUpToItemValue:
+          type:
+          - number
+          - 'null'
+          format: double
+        amountPerKilogram:
+          type:
+          - number
+          - 'null'
+          format: double
+        hasReimbursementUpToPackageCost:
+          type: boolean
       additionalProperties: false
     ShippingProduct:
       type: object
@@ -248,18 +304,49 @@ components:
         termsAndConditions:
           $ref: '#/components/schemas/ShippingTermsAndConditions'
       additionalProperties: false
-    ProductsPerWeightSpan:
+    ItemFieldsResponse:
       type: object
       properties:
-        weight:
-          type: number
-          format: double
-        products:
+        vat:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ShippingProduct'
+            type: integer
+            format: int32
+        itemAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IdDescriptionPair'
+        paymentTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IdDescriptionPair'
+        shippingTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/IdDescriptionPair'
+      additionalProperties: false
+    ShippingEstimatedDeliveryTime:
+      type: object
+      properties:
+        minWeekdays:
+          type: integer
+          format: int32
+        maxWeekdays:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    IdDescriptionPair:
+      type: object
       additionalProperties: false
     ShippingPackageRequirements:
       type: object
@@ -331,105 +418,18 @@ components:
           items:
             type: string
       additionalProperties: false
-    ShippingEstimatedDeliveryTime:
+    ProductsPerWeightSpan:
       type: object
       properties:
-        minWeekdays:
-          type: integer
-          format: int32
-        maxWeekdays:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    ShippingInsurance:
-      type: object
-      properties:
-        totalAmount:
-          type:
-          - number
-          - 'null'
+        weight:
+          type: number
           format: double
-        totalAmountUpToItemValue:
-          type:
-          - number
-          - 'null'
-          format: double
-        amountPerKilogram:
-          type:
-          - number
-          - 'null'
-          format: double
-        hasReimbursementUpToPackageCost:
-          type: boolean
-      additionalProperties: false
-    ItemFieldsResponse:
-      type: object
-      properties:
-        vat:
+        products:
           type:
           - array
           - 'null'
           items:
-            type: integer
-            format: int32
-        itemAttributes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/IdDescriptionPair'
-        paymentTypes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/IdDescriptionPair'
-        shippingTypes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/IdDescriptionPair'
-      additionalProperties: false
-    ShippingDeliveryInformation:
-      type: object
-      properties:
-        mailBoxWithServicePointBackup:
-          type: boolean
-        servicePoint:
-          type: boolean
-        canChangeServicePoint:
-          type: boolean
-        isTraceable:
-          type: boolean
-        isParcelBoxDeliveryPossible:
-          type: boolean
-        estimatedDeliveryTime:
-          $ref: '#/components/schemas/ShippingEstimatedDeliveryTime'
-        insurance:
-          $ref: '#/components/schemas/ShippingInsurance'
-      additionalProperties: false
-    ShippingTermsAndConditions:
-      type: object
-      properties:
-        termsAndConditionUrl:
-          type:
-          - string
-          - 'null'
-        general:
-          type:
-          - string
-          - 'null'
-        termsOfService:
-          type:
-          - string
-          - 'null'
-        termsOfPurchase:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/ShippingProduct'
       additionalProperties: false
     GetShippingOptionsResponse:
       type: object
